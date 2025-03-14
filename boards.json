@@ -11,8 +11,8 @@
 	{"id": 5, "name": "CI 5", "defineName": "TOUCH_CI_5", "needCalibration": false, "connectionType": "SPI"}
 ],
 "display": [
-	{"id": 1, "name": "DISP 1", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 2, "name": "DISP 2", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 1, "name": "DISP 1", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}},
+	{"id": 2, "name": "DISP 2", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 420, "height": 360}},
 	{"id": 3, "name": "DISP 3", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
 	{"id": 4, "name": "DISP 4", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
 	{"id": 5, "name": "DISP 5", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
