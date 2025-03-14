@@ -1,0 +1,5 @@
+[
+  {"name": "Placa1", "tags": "1,2,3,4", "image": "caminho1.png"},
+  {"name": "Placa2", "tags": "1,2,3,4", "image": "caminho2.png"},
+  {"name": "Placa3", "tags": "1,2,3,4", "image": "caminho3.png"}
+]
