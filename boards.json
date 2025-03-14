@@ -1,4 +1,4 @@
-{"boards": [
+{"devkit_display": [
   {"id": 1, "name": "Placa1", "tags": "1,2,3,4", "image": "caminho1.png", "idTouch" : 1, "idDisplay": 1},
   {"id": 2, "name": "Placa2", "tags": "1,2,3,4", "image": "caminho2.png", "idTouch" : 0, "idDisplay": 1},
   {"id": 3, "name": "Placa3", "tags": "1,2,3,4", "image": "caminho3.png", "idTouch" : 3, "idDisplay": 2}
