@@ -4,20 +4,20 @@
   {"id": 3, "name": "Placa3", "tags": "1,2,3,4", "image": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fili9488_xpt2046_4pol.jpg?alt=media&token=15b747bc-d991-40ea-96d7-fd1518ce3b02", "idTouch" : 3, "idDisplay": 2}
 ],
 "touch": [
-	{"id": 1, "name": "CI 1", "nomeDefine": "TOUCH_CI_1", "needCalibration": false, "connectionType": "i2c"},
-	{"id": 2, "name": "CI 2", "nomeDefine": "TOUCH_CI_2", "needCalibration": false, "connectionType": "i2c"},
-	{"id": 3, "name": "CI 3", "nomeDefine": "TOUCH_CI_3", "needCalibration": true, "connectionType": "spi"},
-	{"id": 4, "name": "CI 4", "nomeDefine": "TOUCH_CI_4", "needCalibration": true, "connectionType": "i2c"},
-	{"id": 5, "name": "CI 5", "nomeDefine": "TOUCH_CI_5", "needCalibration": false, "connectionType": "spi"}
+	{"id": 1, "name": "CI 1", "defineName": "TOUCH_CI_1", "needCalibration": false, "connectionType": "I2C"},
+	{"id": 2, "name": "CI 2", "defineName": "TOUCH_CI_2", "needCalibration": false, "connectionType": "I2C"},
+	{"id": 3, "name": "CI 3", "defineName": "TOUCH_CI_3", "needCalibration": true, "connectionType": "SPI"},
+	{"id": 4, "name": "CI 4", "defineName": "TOUCH_CI_4", "needCalibration": true, "connectionType": "I2C"},
+	{"id": 5, "name": "CI 5", "defineName": "TOUCH_CI_5", "needCalibration": false, "connectionType": "SPI"}
 ],
 "display": [
-	{"id": 1, "name": "DISP 1", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 2, "name": "DISP 2", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 3, "name": "DISP 3", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 4, "name": "DISP 4", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 5, "name": "DISP 5", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 6, "name": "DISP 6", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 7, "name": "DISP 7", "modeloLib": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
-	{"id": 8, "name": "DISP 8", "modeloLib": "OUTRA", "separator": "->", "defaultSize": {"width": 400, "height": 300}}
+	{"id": 1, "name": "DISP 1", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 2, "name": "DISP 2", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 3, "name": "DISP 3", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 4, "name": "DISP 4", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 5, "name": "DISP 5", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 6, "name": "DISP 6", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 7, "name": "DISP 7", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 400, "height": 300}},
+	{"id": 8, "name": "DISP 8", "libModel": "OUTRA", "separator": "->", "defaultSize": {"width": 400, "height": 300}}
 ]
 }
