@@ -1,9 +1,6 @@
 {"devkit_display": [
-  {"id": 1, "name": "Placa1", "tags": "1,2,3,4", "image": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FcircularDisplay.jpg?alt=media&token=3f4cec2e-0525-43ec-b0eb-37d1d6c3374f", "idTouch" : 1, "idDisplay": 1},
-  {"id": 2, "name": "Placa2", "tags": "1,2,3,4", "image": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fesp324827s043_gt911.jpg?alt=media&token=2abcf515-e5de-4d80-bf85-4127340a9fa7", "idTouch" : 0, "idDisplay": 1},
-  {"id": 3, "name": "Placa3", "tags": "1,2,3,4", "image": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fili9488_xpt2046_4pol.jpg?alt=media&token=15b747bc-d991-40ea-96d7-fd1518ce3b02", "idTouch" : 3, "idDisplay": 2},
-  {"id": 4, "name": "GC9A01 TFT 240x240 1.28 circular", "tags": "tft,circle,circular,240,gc9a01,watch,clock", "idDisplay": 4, "idTouch": 0, "image": "images/displays/circularDisplay.jpg" },
-  {"id": 5, "name": "ES32S3 IPS 480x270 capacitive GT911", "tags": "ips,esp32,s3,480,270,capacitive,gt911,yellow,touch", "idDisplay": 2, "idTouch": 1, "image": "images/displays/esp324827s043_gt911.jpg" },
+  {"id": 4, "name": "GC9A01 TFT 240x240 1.28 circular", "tags": "tft,circle,circular,240,gc9a01,watch,clock", "idDisplay": 5, "idTouch": 0, "image": "images/displays/circularDisplay.jpg" },
+  {"id": 5, "name": "ES32S3 IPS 480x270 capacitive GT911", "tags": "ips,esp32,s3,480,270,capacitive,gt911,yellow,touch", "idDisplay": 4, "idTouch": 1, "image": "images/displays/esp324827s043_gt911.jpg" },
   {"id": 6, "name": "ESP32S3 TFT 4.0 800x480 resistive XPT2046", "tags": "tft,s3,800,480,resistive,xpt2046,touch", "idDisplay": 2, "idTouch": 2, "image": "images/displays/esp328048s043_xpt2046.jpg" },
   {"id": 7, "name": "ILI9488 TFT 4.0 capacitive FT6236", "tags": "tft,ili9488,capacitive,ft6236u,touch,480,320", "idDisplay": 1, "idTouch": 3, "image": "images/displays/ili9488_ft6236.jpg" },
   {"id": 8, "name": "ILI9488 TFT 4.0 resistive XPT2046", "tags": "tft,ili9488,resistive,xpt2046,touch,480,320", "idDisplay": 1, "idTouch": 2, "image": "images/displays/ili9488_xpt2046_4pol.jpg" }
@@ -17,7 +14,7 @@
 "display": [
 	{"id": 1, "name": "ILI9488", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}},
 	{"id": 2, "name": "ESP32-8048S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 800, "height": 480}},
-	{"id": 3, "name": "ESP32-4827S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 480, "height": 272}},
-	{"id": 4, "name": "GC9A01", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}}
+	{"id": 4, "name": "ESP32-4827S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 480, "height": 272}},
+	{"id": 5, "name": "GC9A01", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}}
 ]
 }
