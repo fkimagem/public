@@ -1,0 +1,1404 @@
+#include "displayfk.h"
+
+functionCB_t *DisplayFK::funcaoCB = nullptr;
+bool DisplayFK::sdcardOK = false;
+
+// DisplayFK *DisplayFK::instance = nullptr;
+
+#if defined(DFK_TOUCHAREA)
+TouchArea *DisplayFK::arrayTouchArea = nullptr;
+uint8_t DisplayFK::qtdTouchArea = 0;
+#endif
+#ifdef DFK_CHECKBOX
+uint8_t DisplayFK::qtdCheckbox = 0;
+CheckBox *DisplayFK::arrayCheckbox = nullptr;
+#endif
+
+// Array of circle button
+#ifdef DFK_CIRCLEBTN
+uint8_t DisplayFK::qtdCircleBtn = 0;
+CircleButton *DisplayFK::arrayCircleBtn = nullptr;
+#endif
+// Array os gauge
+#ifdef DFK_GAUGE
+uint8_t DisplayFK::qtdGauge = 0;
+GaugeSuper *DisplayFK::arrayGauge = nullptr;
+
+uint8_t DisplayFK::qtdGaugeCircle = 0;
+GaugeCircle *DisplayFK::arrayGaugeCircle = nullptr;
+#endif
+// Array of slider
+#ifdef DFK_HSLIDER
+uint8_t DisplayFK::qtdHSlider = 0;
+HSlider *DisplayFK::arrayHSlider = nullptr;
+#endif
+// Array os labels
+#ifdef DFK_LABEL
+uint8_t DisplayFK::qtdLabel = 0;
+Label *DisplayFK::arrayLabel = nullptr;
+#endif
+// Array of leds
+#ifdef DFK_LED
+uint8_t DisplayFK::qtdLed = 0;
+Led *DisplayFK::arrayLed = nullptr;
+#endif
+// Array of line chart
+#ifdef DFK_LINECHART
+uint8_t DisplayFK::qtdLineChart = 0;
+LineChart *DisplayFK::arrayLineChart = nullptr;
+#endif
+// Array of radio buttons groups
+#ifdef DFK_RADIO
+uint8_t DisplayFK::qtdRadioGroup = 0;
+RadioGroup *DisplayFK::arrayRadioGroup = nullptr;
+#endif
+#ifdef DFK_RECTBTN
+uint8_t DisplayFK::qtdRectBtn = 0;
+RectButton *DisplayFK::arrayRectBtn = nullptr;
+#endif
+// Array of toggle
+#ifdef DFK_TOGGLE
+uint8_t DisplayFK::qtdToggle = 0;
+ToggleButton *DisplayFK::arrayToggleBtn = nullptr;
+#endif
+// Array of vertical loader
+#ifdef DFK_VBAR
+uint8_t DisplayFK::qtdVBar = 0;
+VBar *DisplayFK::arrayVBar = nullptr;
+#endif
+// Array of analog viewer
+#ifdef DFK_VANALOG
+uint8_t DisplayFK::qtdVAnalog = 0;
+VAnalog *DisplayFK::arrayVAnalog = nullptr;
+#endif
+// Array of string textbox
+#ifdef DFK_TEXTBOX
+uint8_t DisplayFK::qtdTextBox = 0;
+TextBox *DisplayFK::DisplayFK::arrayTextBox = nullptr;
+WKeyboard *DisplayFK::keyboard = nullptr;
+#endif
+// Array of numberbox
+#ifdef DFK_NUMBERBOX
+uint8_t DisplayFK::qtdNumberBox = 0;
+NumberBox *DisplayFK::arrayNumberbox = nullptr;
+Numpad *DisplayFK::numpad = nullptr;
+#endif
+#ifdef DFK_IMAGE
+uint8_t DisplayFK::qtdImage = 0;
+Image *DisplayFK::arrayImage = nullptr;
+#endif
+#ifdef DFK_SD
+QueueHandle_t DisplayFK::xFilaLog;
+#endif
+#ifdef DFK_SPINBOX
+uint8_t DisplayFK::qtdSpinbox = 0;
+SpinBox *DisplayFK::arraySpinbox = nullptr;
+#endif
+
+void DisplayFK::changeWTD(bool enable)
+{
+    if (enable)
+    {
+        Serial.println("Enabling watchdog");
+        //TIMERG0.wdt_wprotect = TIMG_WDT_WKEY_VALUE;
+        uint32_t timeout_seconds = 2;
+        //TIMERG0.wdt_config0.en = 0;
+        //TIMERG0.wdt_config1.clk_prescale = 80 * 1000;        // 80 MHz / 80 * 1000 = 1 kHz
+        //TIMERG0.wdt_config2 = timeout_seconds * 1000 * 1000; // Converte para microsegundos
+
+        // Reabilita o WDT
+        //TIMERG0.wdt_config0.en = 1;
+        //TIMERG0.wdt_wprotect = 0;
+    }
+    else
+    {
+        Serial.println("Disabling watchdog");
+        //TIMERG0.wdt_wprotect = TIMG_WDT_WKEY_VALUE;
+        //TIMERG0.wdt_config0.en = 0;
+        //TIMERG0.wdt_wprotect = 0;
+    }
+}
+
+#ifdef DFK_SD
+const char *DisplayFK::generateNameFile()
+{
+    static char guid[38]; // / + 32 caracteres + '.txt' + terminador nulo
+
+    // Semente para o gerador de números aleatórios
+
+    for (auto i = 1; i < 33; i++)
+    {
+        guid[i] = randomHexChar();
+    }
+
+    guid[0] = '/';
+    //.txt
+    guid[33] = '.';
+    guid[34] = 't';
+    guid[35] = 'x';
+    guid[36] = 't';
+    guid[37] = '\0'; // Adiciona o terminador nulo
+
+    return guid;
+}
+
+const char *DisplayFK::getLogFileName()
+{
+    return nameLogFile;
+}
+#endif
+
+#ifdef DFK_CHECKBOX
+void DisplayFK::setCheckbox(CheckBox *array, uint8_t amount)
+{
+    if (checkboxConfigured)
+    {
+        log_w("Checkbox already conffigured");
+        return;
+    }
+    checkboxConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayCheckbox = array;
+    DisplayFK::qtdCheckbox = amount;
+}
+#endif
+
+#ifdef DFK_CIRCLEBTN
+void DisplayFK::setCircleButton(CircleButton *array, uint8_t amount)
+{
+    if (circleButtonConfigured)
+    {
+        log_w("CircleButton already conffigured");
+        return;
+    }
+    circleButtonConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayCircleBtn = array;
+    DisplayFK::qtdCircleBtn = amount;
+}
+#endif
+
+#ifdef DFK_GAUGE
+void DisplayFK::setGauge(GaugeSuper *array, uint8_t amount)
+{
+    if (gaugeConfigured)
+    {
+        log_w("Gauge already conffigured");
+        return;
+    }
+    gaugeConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayGauge = array;
+    DisplayFK::qtdGauge = amount;
+}
+
+void DisplayFK::setGaugeCircle(GaugeCircle *array, uint8_t amount)
+{
+    if (gaugeCircleConfigured)
+    {
+        log_w("GaugeCircle already conffigured");
+        return;
+    }
+    gaugeCircleConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayGaugeCircle = array;
+    DisplayFK::qtdGaugeCircle = amount;
+}
+#endif
+
+#ifdef DFK_HSLIDER
+void DisplayFK::setHSlider(HSlider *array, uint8_t amount)
+{
+    if (hSliderConfigured)
+    {
+        log_w("HSlider already conffigured");
+        return;
+    }
+    hSliderConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayHSlider = array;
+    DisplayFK::qtdHSlider = amount;
+}
+#endif
+
+#ifdef DFK_LABEL
+void DisplayFK::setLabel(Label *array, uint8_t amount)
+{
+    if (labelConfigured)
+    {
+        log_w("Label already conffigured");
+        return;
+    }
+    labelConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayLabel = array;
+    DisplayFK::qtdLabel = amount;
+}
+#endif
+
+#ifdef DFK_LED
+void DisplayFK::setLed(Led *array, uint8_t amount)
+{
+    if (ledConfigured)
+    {
+        log_w("Led already conffigured");
+        return;
+    }
+    ledConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayLed = array;
+    DisplayFK::qtdLed = amount;
+}
+#endif
+
+#ifdef DFK_LINECHART
+void DisplayFK::setLineChart(LineChart *array, uint8_t amount)
+{
+    if (lineChartConfigured)
+    {
+        log_w("LineChart already conffigured");
+        return;
+    }
+    lineChartConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayLineChart = array;
+    DisplayFK::qtdLineChart = amount;
+}
+#endif
+
+#ifdef DFK_NUMBERBOX
+void DisplayFK::setNumberbox(NumberBox *array, uint8_t amount)
+{
+    if (numberboxConfigured)
+    {
+        log_w("Numberbox already conffigured");
+        return;
+    }
+    numberboxConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayNumberbox = array;
+    DisplayFK::qtdNumberBox = amount;
+
+    setupNumpad();
+}
+void DisplayFK::setupNumpad()
+{
+    pNumpad.setup();
+    DisplayFK::numpad = &pNumpad;
+}
+#endif
+
+#ifdef DFK_RADIO
+void DisplayFK::setRadioGroup(RadioGroup *array, uint8_t amount)
+{
+    if (radioGroupConfigured)
+    {
+        log_w("RadioGroup already conffigured");
+        return;
+    }
+    radioGroupConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayRadioGroup = array;
+    DisplayFK::qtdRadioGroup = amount;
+}
+#endif
+
+#ifdef DFK_RECTBTN
+void DisplayFK::setRectButton(RectButton *array, uint8_t amount)
+{
+    if (rectButtonConfigured)
+    {
+        log_w("RectButton already conffigured");
+        return;
+    }
+    rectButtonConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayRectBtn = array;
+    DisplayFK::qtdRectBtn = amount;
+}
+#endif
+
+#ifdef DFK_SPINBOX
+void DisplayFK::setSpinbox(SpinBox *array, uint8_t amount)
+{
+    if (spinboxConfigured)
+    {
+        log_w("SpinBox already conffigured");
+        return;
+    }
+    spinboxConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arraySpinbox = array;
+    DisplayFK::qtdSpinbox = amount;
+}
+#endif
+
+#ifdef DFK_TEXTBOX
+void DisplayFK::setTextbox(TextBox *array, uint8_t amount)
+{
+    if (textboxConfigured)
+    {
+        log_w("Textbox already conffigured");
+        return;
+    }
+    textboxConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayTextBox = array;
+    DisplayFK::qtdTextBox = amount;
+
+    setupKeyboard();
+}
+void DisplayFK::setupKeyboard()
+{
+    pKeyboard.setup();
+    DisplayFK::keyboard = &pKeyboard;
+}
+#endif
+
+#ifdef DFK_TOGGLE
+void DisplayFK::setToggle(ToggleButton *array, uint8_t amount)
+{
+    if (toggleConfigured)
+    {
+        log_w("Toggle already conffigured");
+        return;
+    }
+    toggleConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayToggleBtn = array;
+    DisplayFK::qtdToggle = amount;
+}
+#endif
+
+#if defined(DFK_TOUCHAREA)
+void DisplayFK::setTouchArea(TouchArea *array, uint8_t amount)
+{
+    if (touchAreaConfigured)
+    {
+        log_w("TouchArea already conffigured");
+        return;
+    }
+    touchAreaConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayTouchArea = array;
+    DisplayFK::qtdTouchArea = amount;
+}
+#endif
+
+#ifdef DFK_VANALOG
+void DisplayFK::setVAnalog(VAnalog *array, uint8_t amount)
+{
+    if (vAnalogConfigured)
+    {
+        log_w("VAnalog already conffigured");
+        return;
+    }
+    vAnalogConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayVAnalog = array;
+    DisplayFK::qtdVAnalog = amount;
+}
+#endif
+
+#ifdef DFK_VBAR
+void DisplayFK::setVBar(VBar *array, uint8_t amount)
+{
+    if (vBarConfigured)
+    {
+        log_w("VBar already conffigured");
+        return;
+    }
+    vBarConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayVBar = array;
+    DisplayFK::qtdVBar = amount;
+}
+#endif
+
+#ifdef DFK_IMAGE
+void DisplayFK::setImage(Image *array, uint8_t amount)
+{
+    if (imageConfigured)
+    {
+        log_w("Image already conffigured");
+        return;
+    }
+    imageConfigured = (amount > 0 && array != nullptr);
+    DisplayFK::arrayImage = array;
+    DisplayFK::qtdImage = amount;
+}
+#endif
+
+#ifdef DFK_SD
+void DisplayFK::setupSD()
+{
+    log_d("Starting setup SD");
+
+#if defined(DFK_USE_TFTSPI)
+    spiSD = WidgetBase::objTFT->getSPIinstance();
+    if (!SD.begin(MICROSD_CS, spiSD))
+    {
+        log_e("Card Mount Failed");
+        return;
+    }
+#elif defined(MICROSD_SCK) && defined(MICROSD_MISO) && defined(MICROSD_MOSI) && defined(MICROSD_CS)
+    spiSD.begin(MICROSD_SCK, MICROSD_MISO, MICROSD_MOSI, MICROSD_CS);
+    if (!SD.begin(MICROSD_CS, spiSD, 4000000, "/sd", 5, false))
+    {
+        log_e("Card Mount Failed");
+        return;
+    }
+#endif
+
+    WidgetBase::mySD = &SD;
+
+    uint8_t cardType = WidgetBase::mySD->cardType();
+
+    if (cardType == CARD_NONE)
+    {
+        log_w("No SD card attached");
+        SD.end();
+        return;
+    }
+
+    if (cardType == CARD_MMC)
+    {
+        log_d("SD Card Type: MMC");
+    }
+    else if (cardType == CARD_SD)
+    {
+        log_d("SD Card Type: SDSC");
+    }
+    else if (cardType == CARD_SDHC)
+    {
+        log_d("SD Card Type: SDHC");
+    }
+    else
+    {
+        log_d("SD Card Type: UNKNOWN");
+    }
+
+    uint64_t cardSize = WidgetBase::mySD->cardSize() / (1024 * 1024);
+    log_d("SD Card Size: %lluMB\n", cardSize);
+
+    log_d("SD Done");
+    DisplayFK::sdcardOK = true;
+
+    DisplayFK::xFilaLog = xQueueCreate(LOG_LENGTH, sizeof(char *));
+    if (DisplayFK::xFilaLog == NULL)
+    {
+        log_e("Fail while creating log queue");
+        DisplayFK::sdcardOK = false;
+    }
+
+    nameLogFile = generateNameFile();
+
+    listFiles(WidgetBase::mySD, "/", 0);
+}
+
+void DisplayFK::listFiles(fs::FS *fs, const char *dirname, uint8_t levels)
+{
+    if (!DisplayFK::sdcardOK)
+    {
+        log_e("SD not configured");
+        return;
+    }
+    log_d("Listing directory: %s\n", dirname);
+
+    File root = fs->open(dirname);
+    if (!root)
+    {
+        Serial.println("Failed to open directory");
+        return;
+    }
+    if (!root.isDirectory())
+    {
+        Serial.println("Not a directory");
+        return;
+    }
+
+    File file = root.openNextFile();
+    while (file)
+    {
+        if (file.isDirectory())
+        {
+            Serial.print("  DIR : ");
+            Serial.println(file.name());
+            if (levels)
+            {
+                listFiles(fs, file.name(), levels - 1);
+            }
+        }
+        else
+        {
+            Serial.print("  FILE: ");
+            Serial.print(file.name());
+            Serial.print("  SIZE: ");
+            Serial.println(file.size());
+        }
+        file = root.openNextFile();
+    }
+}
+
+void DisplayFK::appendFile(fs::FS *fs, const char *path, const char *message)
+{
+    if (!DisplayFK::sdcardOK)
+    {
+        log_e("SD not configured");
+        return;
+    }
+
+    auto len = strlen(message);
+
+    log_d("Appending %d bytes to file: %s", len, path);
+
+    File file = fs->open(path, FILE_APPEND);
+    if (!file)
+    {
+        log_e("Failed to open file for appending");
+        return;
+    }
+
+    if (file.size() > LOG_MAX_SIZE)
+    {
+        log_e("Log too large");
+        file.close();
+        return;
+    }
+
+    if (len <= 1)
+    {
+        log_w("Empty message isnt appended");
+        file.close();
+        return;
+    }
+
+    if (file.println(message))
+    {
+        log_d("Message appended");
+    }
+    else
+    {
+        log_e("Append failed");
+    }
+    file.close();
+}
+
+void DisplayFK::readFile(fs::FS *fs, const char *path)
+{
+    if (!DisplayFK::sdcardOK)
+    {
+        log_e("SD not configured");
+        return;
+    }
+    log_d("Reading file: %s\n", path);
+
+    File file = fs->open(path);
+    if (!file)
+    {
+        log_e("Failed to open file for reading");
+        return;
+    }
+
+    log_d("Read from file: ");
+    while (file.available())
+    {
+        Serial.write(file.read());
+    }
+    file.close();
+}
+
+void DisplayFK::createDir(fs::FS *fs, const char *path)
+{
+    if (!DisplayFK::sdcardOK)
+    {
+        log_e("SD not configured");
+        return;
+    }
+    log_d("Creating Dir: %s\n", path);
+    if (fs->mkdir(path))
+    {
+        log_d("Dir created");
+    }
+    else
+    {
+        log_e("mkdir failed");
+    }
+}
+
+void DisplayFK::addLog(const char *data)
+{
+    if (!DisplayFK::sdcardOK)
+    {
+        log_e("SD not configured");
+        return;
+    }
+
+    const size_t length = strlen(data) + 1;
+
+    // Alocar memória para a nova string modificável
+    char *modifiableStr = new char[length]; // +1 para o terminador nulo
+    // char modifiableStr[length] ;
+
+    // Copiar a string constante para a nova string
+    strcpy(modifiableStr, data);
+
+    if (xQueueSend(DisplayFK::xFilaLog, &modifiableStr, 100) == pdTRUE)
+    {
+        log_d("Added on log queue: %s", data);
+    }
+    else
+    {
+        log_w("Timeout to log queue: %s", data);
+    }
+}
+
+#endif
+
+char DisplayFK::randomHexChar()
+{
+    const char hexDigits[] = "0123456789abcdef";
+    int indice = random(0, 16);
+    return hexDigits[indice];
+}
+
+DisplayFK::DisplayFK() : configs()
+{
+// DisplayFK::instance = this;
+WidgetBase::fontBold = const_cast<GFXfont*>(&Roboto_Bold5pt7b);
+WidgetBase::fontNormal = const_cast<GFXfont*>(&Roboto_Bold5pt7b);
+}
+
+DisplayFK::~DisplayFK()
+{
+}
+
+void DisplayFK::setFontNormal(const GFXfont *_font)
+{
+    WidgetBase::fontNormal = _font;
+}
+
+void DisplayFK::setFontBold(const GFXfont *_font)
+{
+    WidgetBase::fontBold = _font;
+}
+
+#if defined(HAS_TOUCH)
+#if defined(DISP_DEFAULT)
+    void DisplayFK::startTouch(uint16_t w, uint16_t h){
+        touchExterno = new TouchScreen();
+
+        if(touchExterno){
+            touchExterno->setDimension(w, h);
+        }
+    }
+#endif
+#endif
+
+/// @brief Draw on display the objects and widgets of screen
+/// @param currentScreenIndex Index of screen
+void DisplayFK::drawWidgetsOnScreen(const uint8_t currentScreenIndex)
+{
+    WidgetBase::currentScreen = currentScreenIndex;
+    Serial.print("Drawing widgets of screen:");
+    Serial.println(WidgetBase::currentScreen);
+
+#if defined(DFK_TOUCHAREA)
+    if (touchAreaConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdTouchArea); indice++)
+        {
+            arrayTouchArea[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("TouchaArea not configured");
+    }
+#endif
+
+#ifdef DFK_CHECKBOX
+    if (checkboxConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdCheckbox); indice++)
+        {
+            arrayCheckbox[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Checkbox not configured");
+    }
+#endif
+#ifdef DFK_CIRCLEBTN
+    if (circleButtonConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdCircleBtn); indice++)
+        {
+            arrayCircleBtn[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("CircleButton not configured");
+    }
+#endif
+#ifdef DFK_SPINBOX
+    if (spinboxConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdSpinbox); indice++)
+        {
+            arraySpinbox[indice].drawBackground();
+            arraySpinbox[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("SpinBox not configured");
+    }
+#endif
+#ifdef DFK_GAUGE
+    if (gaugeConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdGauge); indice++)
+        {
+            arrayGauge[indice].forceUpdate();
+            arrayGauge[indice].drawBackground();
+        }
+    }
+    else
+    {
+        log_e("GaugeCircle not configured");
+    }
+
+    if (gaugeCircleConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdGaugeCircle); indice++)
+        {
+            arrayGaugeCircle[indice].forceUpdate();
+            arrayGaugeCircle[indice].drawBackground();
+        }
+    }
+    else
+    {
+        log_e("GaugeCircle not configured");
+    }
+
+#endif
+#ifdef DFK_HSLIDER
+    if (hSliderConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdHSlider); indice++)
+        {
+            arrayHSlider[indice].drawBackground();
+        }
+    }
+    else
+    {
+        log_e("HSlider not configured");
+    }
+#endif
+#ifdef DFK_LABEL
+    if (labelConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdLabel); indice++)
+        {
+            arrayLabel[indice].forceUpdate();
+            arrayLabel[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Label not configured");
+    }
+#endif
+#ifdef DFK_LED
+    if (ledConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdLed); indice++)
+        {
+            arrayLed[indice].forceUpdate();
+            arrayLed[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Led not configured");
+    }
+#endif
+#ifdef DFK_LINECHART
+    if (lineChartConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdLineChart); indice++)
+        {
+            arrayLineChart[indice].forceUpdate();
+            arrayLineChart[indice].drawBackground();
+        }
+    }
+    else
+    {
+        log_e("LineChart not configured");
+    }
+#endif
+#ifdef DFK_RADIO
+    if (radioGroupConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdRadioGroup); indice++)
+        {
+            arrayRadioGroup[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("RadioGroup not configured");
+    }
+#endif
+#ifdef DFK_RECTBTN
+    if (rectButtonConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdRectBtn); indice++)
+        {
+            arrayRectBtn[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Rectbutton not configured");
+    }
+#endif
+#ifdef DFK_TOGGLE
+    if (toggleConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdToggle); indice++)
+        {
+            arrayToggleBtn[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Toggle not configured");
+    }
+#endif
+#ifdef DFK_VBAR
+    if (vBarConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdVBar); indice++)
+        {
+            arrayVBar[indice].forceUpdate();
+            arrayVBar[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("VBar not configured");
+    }
+#endif
+#ifdef DFK_VANALOG
+    if (vAnalogConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdVAnalog); indice++)
+        {
+            arrayVAnalog[indice].forceUpdate();
+            arrayVAnalog[indice].drawBackground();
+        }
+    }
+    else
+    {
+        log_e("VAnalog not configured");
+    }
+#endif
+#ifdef DFK_TEXTBOX
+    if (textboxConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdTextBox); indice++)
+        {
+            arrayTextBox[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Textbox not configured");
+    }
+#endif
+#ifdef DFK_NUMBERBOX
+    if (numberboxConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdNumberBox); indice++)
+        {
+            arrayNumberbox[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Numberbox not configured");
+    }
+#endif
+#ifdef DFK_IMAGE
+    if (imageConfigured)
+    {
+        for (register uint32_t indice = 0; indice < (qtdImage); indice++)
+        {
+            arrayImage[indice].forceUpdate();
+            arrayImage[indice].redraw();
+        }
+    }
+    else
+    {
+        log_e("Image not configured");
+    }
+#endif
+}
+
+void DisplayFK::createTask()
+{
+    changeWTD(true);
+    BaseType_t xRetorno;
+    xRetorno = xTaskCreatePinnedToCore(DisplayFK::TaskEventoTouch, "TaskEventoTouch", configMINIMAL_STACK_SIZE + 3048, this, 1, &hndTaskEventoTouch, 0);
+    if (xRetorno == pdFAIL)
+    {
+        log_e("Cant create task to read touch");
+    }
+}
+
+/// @brief Draw a PNG image
+/// @param _x Start position to print
+/// @param _y Start position to print
+/// @param _colors Array of pixels colors
+/// @param _mask Array of mask (0 = no color print, 1 = color print)
+/// @param _w Width of image
+/// @param _h Height of image
+void DisplayFK::drawPng(uint16_t _x, uint16_t _y, const uint16_t _colors[], const uint8_t _mask[], uint16_t _w, uint16_t _h)
+{
+    for (auto i = 0; i < _w; ++i){
+      for (auto j = 0; j < _h; ++j){
+        auto posX = _x + i;
+        auto posY = _y + j;
+        uint8_t _bit = _mask[(i*_w) + j];
+        uint16_t _cor = _colors[(i*_w) + j];
+        if(_bit){
+          WidgetBase::objTFT->drawPixel(posX, posY, _cor);
+        }
+      } 
+    }
+}
+
+void DisplayFK::TaskEventoTouch(void *pvParameters)
+{
+    //(void)pvParameters;
+    DisplayFK *instance = static_cast<DisplayFK *>(pvParameters);
+
+    log_d("TaskEventoTouch created");
+    // const TickType_t xDelay = 10 / portTICK_PERIOD_MS;
+
+    for (;;)
+    {
+        // alimenta o WD de hardware do núcleo 0
+        //TIMERG0.wdt_wprotect = TIMG_WDT_WKEY_VALUE;
+        //TIMERG0.wdt_feed = 1;
+        uint16_t xTouch, yTouch; //, zTouch;
+        /*if (WidgetBase::showingLog)
+        {
+            TIMERG0.wdt_wprotect = 0;
+            continue;
+        }*/
+        if (WidgetBase::loadScreen)
+        {
+            WidgetBase::loadScreen();
+            WidgetBase::loadScreen = nullptr;
+        }
+        if (funcaoCB)
+        {
+            log_d("Executing funcaoCB on taskloop");
+            (*funcaoCB)();
+            funcaoCB = nullptr;
+            log_d("Done and cleaned funcaoCB on taskloop");
+        }
+
+#ifdef DFK_SD
+        char *receivedString = "abcdefghijoklmonqrs";
+        if (DisplayFK::xFilaLog != NULL && instance != nullptr && DisplayFK::sdcardOK)
+        {
+            if (xQueueReceive(DisplayFK::xFilaLog, &receivedString, 10))
+            {
+                Serial.print("-->");
+                Serial.println(receivedString);
+                log_d("Writing in file '%s'", receivedString);
+                instance->appendFile(WidgetBase::mySD, instance->getLogFileName(), receivedString);
+            }
+        }
+#endif
+
+#if defined(TOUCH_CS) || defined(HAS_TOUCH)
+// Se houve um evento do touch
+#if defined(DISP_BODMER)
+        if ((WidgetBase::objTFT->getTouch(&xTouch, &yTouch)) > 0)
+#elif defined(DISP_DEFAULT)
+        if ((instance->touchExterno->getTouch(&xTouch, &yTouch)) > 0)
+#endif
+        {
+            // zTouch = tft.getTouchRawZ();
+            // Serial.print(xTouch);
+            // Serial.print(",");
+            // Serial.println(yTouch);
+
+#ifdef LOG_POINTER
+#if defined(DISP_BODMER)
+WidgetBase::objTFT.fillCircle(xTouch, yTouch, 2, TFT_MAGENTA);
+#elif defined(DISP_DEFAULT)
+WidgetBase::objTFT->fillCircle(xTouch, yTouch, 2, TFT_MAGENTA);
+Serial.printf("Click: %i x %i\n", xTouch, yTouch);
+#endif
+            
+#endif
+
+            if (!WidgetBase::usingKeyboard)
+            {
+// Serial.print("Forca Z:");Serial.println(zTouch);
+#if defined(DFK_TOUCHAREA)
+                for (uint32_t indice = 0; indice < (DisplayFK::qtdTouchArea) && instance->touchAreaConfigured; indice++)
+                {
+                    if (arrayTouchArea[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = arrayTouchArea[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_CHECKBOX
+                for (uint32_t indice = 0; indice < (qtdCheckbox) && instance->checkboxConfigured; indice++)
+                {
+                    if (arrayCheckbox[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = arrayCheckbox[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_CIRCLEBTN
+                for (uint32_t indice = 0; indice < (qtdCircleBtn) && instance->circleButtonConfigured; indice++)
+                {
+                    if (arrayCircleBtn[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = arrayCircleBtn[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_HSLIDER
+                for (uint32_t indice = 0; indice < (qtdHSlider) && instance->hSliderConfigured; indice++)
+                {
+                    if (arrayHSlider[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = arrayHSlider[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_RADIO
+                for (uint32_t indice = 0; indice < (DisplayFK::qtdRadioGroup) && instance->radioGroupConfigured; indice++)
+                {
+                    if (DisplayFK::arrayRadioGroup[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = DisplayFK::arrayRadioGroup[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_RECTBTN
+                for (uint32_t indice = 0; indice < (DisplayFK::qtdRectBtn) && instance->rectButtonConfigured; indice++)
+                {
+                    if (DisplayFK::arrayRectBtn[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = DisplayFK::arrayRectBtn[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_SPINBOX
+                for (uint32_t indice = 0; indice < (DisplayFK::qtdSpinbox) && instance->spinboxConfigured; indice++)
+                {
+                    if (DisplayFK::arraySpinbox[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = DisplayFK::arraySpinbox[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_TOGGLE
+                for (uint32_t indice = 0; indice < (qtdToggle) && instance->toggleConfigured; indice++)
+                {
+                    if (arrayToggleBtn[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        funcaoCB = arrayToggleBtn[indice].getCallbackFunc();
+                    }
+                }
+#endif
+
+#ifdef DFK_TEXTBOX
+                for (uint32_t indice = 0; indice < (qtdTextBox) && instance->textboxConfigured; indice++)
+                {
+                    if (arrayTextBox[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        DisplayFK::keyboard->open(&arrayTextBox[indice]);
+
+                        WKeyboard::PressedKeyType pressedKey = WKeyboard::PressedKeyType::NONE;
+
+                        while (WidgetBase::usingKeyboard)
+                        {
+#if defined(DISP_BODMER)
+                            if ((WidgetBase::objTFT->getTouch(&xTouch, &yTouch)) > 0)
+#elif defined(DISP_DEFAULT)
+                            if ((instance->touchExterno->getTouch(&xTouch, &yTouch)) > 0)
+#endif
+                            {
+                                // log_d("Touch while keyboard is open %d %d", xTouch, yTouch);
+
+                                if (DisplayFK::keyboard->detectTouch(&xTouch, &yTouch, &pressedKey))
+                                {
+                                    // log_d("Clicked on some key");
+                                    if (pressedKey == WKeyboard::PressedKeyType::RETURN)
+                                    {
+                                        log_d("OK key");
+                                        WidgetBase::loadScreen = keyboard->field->parentScreen;
+                                        keyboard->close();
+                                    }
+                                }
+                            }
+                        }
+                        if (pressedKey == WKeyboard::PressedKeyType::RETURN)
+                        {
+                            log_d("OK key for textbox %d", indice);
+                            funcaoCB = arrayTextBox[indice].getCallbackFunc();
+                        }
+                    }
+                }
+#endif
+
+#ifdef DFK_NUMBERBOX
+                for (uint32_t indice = 0; indice < (qtdNumberBox) && instance->numberboxConfigured; indice++)
+                {
+                    if (arrayNumberbox[indice].detectTouch(&xTouch, &yTouch))
+                    {
+                        numpad->open(&arrayNumberbox[indice]);
+
+                        Numpad::PressedKeyType pressedKey = Numpad::PressedKeyType::NONE;
+
+                        while (WidgetBase::usingKeyboard)
+                        {
+#if defined(DISP_BODMER)
+                            if ((WidgetBase::objTFT->getTouch(&xTouch, &yTouch)) > 0)
+#elif defined(DISP_DEFAULT)
+                            if ((instance->touchExterno->getTouch(&xTouch, &yTouch)) > 0)
+#endif
+                            {
+                                // log_d("Touch while keyboard is open %d %d", xTouch, yTouch);
+
+                                if (numpad->detectTouch(&xTouch, &yTouch, &pressedKey))
+                                {
+                                    // log_d("Clicked on some key");
+
+                                    if (pressedKey == Numpad::PressedKeyType::RETURN)
+                                    {
+                                        log_d("OK key");
+                                        WidgetBase::loadScreen = numpad->field->parentScreen;
+                                        numpad->close();
+                                    }
+                                    else
+                                    {
+                                        log_d("Another key");
+                                    }
+                                }
+                            }
+                        }
+                        if (pressedKey == Numpad::PressedKeyType::RETURN)
+                        {
+                            log_d("OK key");
+                            WidgetBase::loadScreen = numpad->field->parentScreen;
+                            numpad->close();
+                            funcaoCB = arrayNumberbox[indice].getCallbackFunc();
+                        }
+                    }
+                }
+#endif
+            }
+        }else{
+
+        }
+#endif
+
+#ifdef DFK_GAUGE
+        for (register uint32_t indice = 0; indice < (qtdGauge) && instance->gaugeConfigured; indice++)
+        {
+            arrayGauge[indice].redraw();
+        }
+        for (register uint32_t indice = 0; indice < (qtdGaugeCircle) && instance->gaugeCircleConfigured; indice++)
+        {
+            arrayGaugeCircle[indice].redraw();
+        }
+#endif
+
+#ifdef DFK_LABEL
+        for (register uint32_t indice = 0; indice < (qtdLabel) && instance->labelConfigured; indice++)
+        {
+            arrayLabel[indice].redraw();
+        }
+#endif
+
+#ifdef DFK_LED
+        for (register uint32_t indice = 0; indice < (qtdLed) && instance->ledConfigured; indice++)
+        {
+            arrayLed[indice].redraw();
+        }
+#endif
+
+#ifdef DFK_LINECHART
+        for (register uint32_t indice = 0; indice < (qtdLineChart) && instance->lineChartConfigured; indice++)
+        {
+            arrayLineChart[indice].redraw();
+        }
+#endif
+
+#ifdef DFK_VBAR
+        for (register uint32_t indice = 0; indice < (qtdVBar) && instance->vBarConfigured; indice++)
+        {
+            arrayVBar[indice].redraw();
+        }
+#endif
+
+#ifdef DFK_VANALOG
+        for (register uint32_t indice = 0; indice < (qtdVAnalog) && instance->vAnalogConfigured; indice++)
+        {
+            arrayVAnalog[indice].redraw();
+        }
+#endif
+        //TIMERG0.wdt_wprotect = 0; // protege novamente o timer
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+
+TaskHandle_t DisplayFK::getTaskHandle()
+{
+    return hndTaskEventoTouch;
+}
+
+#if defined(TOUCH_XPT2046)
+void DisplayFK::updateRotation(uint8_t newRotation, TFT_eSPI *objetoTFT)
+{
+    if (!WidgetBase::objTFT)
+    {
+        log_e("Define WidgetBase::objTFT before use this function");
+        return;
+    }
+    // Determina a rotação de original e compara com a nova rotação solicitada
+    uint8_t antigaRotation = objetoTFT->getRotation();
+
+    if (newRotation == antigaRotation)
+        return; // Não há nada a fazer
+    //... se forem diferentes, inicia o processo de atualização
+
+    // Variável para armazenar os valores de calibração prévia
+    uint16_t dadosDeCalibracao[5]; // matriz que recebe os dados de calibração
+
+    configs.begin("iniciais", true);
+    // configs.getBytes("calib", &dadosDeCalibracao, sizeof(uint16_t) * 5);
+    // Carregamos os dados de calibração prévia
+    dadosDeCalibracao[0] = configs.getUShort("CAL0", 0);
+    dadosDeCalibracao[1] = configs.getUShort("CAL1", 0);
+    dadosDeCalibracao[2] = configs.getUShort("CAL2", 0);
+    dadosDeCalibracao[3] = configs.getUShort("CAL3", 0);
+    dadosDeCalibracao[4] = configs.getUShort("CAL4", 0); // Este valor deverá ser alterado para o novo valor de rotação
+    configs.end();
+
+    // avaliamos como a transformação deve ocorrer
+    uint8_t novoCAL4 = 0;
+    switch (newRotation) // De acordo com a nova rotação
+    {
+    case 0:
+        novoCAL4 = 4; // se for 0, CAL4 deve ser 4
+        break;
+    case 1:
+        novoCAL4 = 7; // se for 1, CAL4 deve ser 7
+        break;
+    case 2:
+        novoCAL4 = 2; // se for 2, CAL4 deve ser 2
+        break;
+    case 3:
+        novoCAL4 = 1; // se for 3, CAL4 deve ser 1
+        break;
+    default:
+        novoCAL4 = antigaRotation; // de nenhuma opção, mantenha a anterior
+        break;
+    }
+
+    // aplicamos a transformação
+    dadosDeCalibracao[4] = novoCAL4;
+
+#if defined(TOUCH_CS)
+    // Aplicamos a nova calibração ao touch
+    objetoTFT->setTouch(dadosDeCalibracao);
+#else
+    log_w("TOUCH_CS wasnt defined on TFT_eSPI library.");
+#endif
+
+    // Aplica a rotação no display
+    objetoTFT->setRotation(newRotation);
+
+    /*Calibração
+      Os dados de saída da matriz de 5 elementos tem o seguinte significado:
+      // export parameters, if pointer valid
+      if(parameters != NULL){
+      parameters[0] = touchCalibration_x0;
+      parameters[1] = touchCalibration_x1;
+      parameters[2] = touchCalibration_y0;
+      parameters[3] = touchCalibration_y1;
+      parameters[4] = touchCalibration_rotate | (touchCalibration_invert_x <<1) | (touchCalibration_invert_y <<2);
+    */
+}
+
+void DisplayFK::checkCalibration()
+{
+#if defined(TOUCH_CS)
+    if (!WidgetBase::objTFT)
+    {
+        log_e("Define WidgetBase::objTFT before use this function");
+        return;
+    }
+
+    uint16_t dadosDeCalibracao[5]; // matriz que recebe os dados de calibração
+    bool jaCalibrado = false;
+    const uint8_t tamanhoDaCaixa = 15;
+    const uint32_t corDaLinha = TFT_WHITE;
+    const uint32_t corFundoDaCaixa = TFT_RED;
+    String msg = "Iniciando calibracao";
+    configs.begin("iniciais", false);                    // Abre o namespace 'iniciais' para leitura e gravação
+    jaCalibrado = configs.getBool("jaCalibrado", false); // carrega a flag de calibração prévia
+    dadosDeCalibracao[0] = configs.getUShort("CAL0", 0);
+    dadosDeCalibracao[1] = configs.getUShort("CAL1", 0);
+    dadosDeCalibracao[2] = configs.getUShort("CAL2", 0);
+    dadosDeCalibracao[3] = configs.getUShort("CAL3", 0);
+    dadosDeCalibracao[4] = configs.getUShort("CAL4", 0);
+    // Define a mensagem
+    WidgetBase::objTFT->fillScreen((0xFFFF));
+    WidgetBase::objTFT->setTextDatum(CC_DATUM);
+    WidgetBase::objTFT->setTextColor(TFT_RED, TFT_WHITE);
+    if (jaCalibrado == false)
+    {
+        WidgetBase::objTFT->setTextPadding(WidgetBase::objTFT->textWidth(msg));
+        WidgetBase::objTFT->drawString(msg, WidgetBase::objTFT->width() / 2, WidgetBase::objTFT->height() / 2, 4);
+        // Executar calibração e teste de tela, reportar valores de calibração na tela
+        WidgetBase::objTFT->calibrateTouch(dadosDeCalibracao, corDaLinha, corFundoDaCaixa, tamanhoDaCaixa);
+        configs.putBool("jaCalibrado", true); // Salva a flag de calibração prévia
+        configs.putUShort("CAL0", dadosDeCalibracao[0]);
+        configs.putUShort("CAL1", dadosDeCalibracao[1]);
+        configs.putUShort("CAL2", dadosDeCalibracao[2]);
+        configs.putUShort("CAL3", dadosDeCalibracao[3]);
+        configs.putUShort("CAL4", dadosDeCalibracao[4]);
+        // Apaga a mensagem anterior
+        WidgetBase::objTFT->setTextColor(TFT_WHITE, TFT_WHITE);
+        WidgetBase::objTFT->drawString(msg, WidgetBase::objTFT->width() / 2, WidgetBase::objTFT->height() / 2, 4);
+    }
+    configs.end();
+    // Ajustar os valores de calibração da tela
+    WidgetBase::objTFT->setTouch(dadosDeCalibracao);
+    msg = "Calibracao concluida";
+    WidgetBase::objTFT->setTextPadding(WidgetBase::objTFT->textWidth(msg));
+    WidgetBase::objTFT->drawString(msg, WidgetBase::objTFT->width() / 2, WidgetBase::objTFT->height() / 2, 4);
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    WidgetBase::objTFT->fillScreen(TFT_BLACK);
+#else
+    log_w("TOUCH_CS wasnt defined on TFT_eSPI library.");
+#endif
+}
+
+void DisplayFK::recalibrate()
+{
+    configs.begin("iniciais", false);
+    configs.putBool("jaCalibrado", false);
+    configs.end();
+    ESP.restart();
+}
+
+#endif

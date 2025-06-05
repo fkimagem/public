@@ -1,0 +1,11 @@
+# DisplayFK core library
+
+FKSerialBus	KEYWORD1
+begin	KEYWORD2
+setTimeout	KEYWORD2
+sendMessageStruct	KEYWORD2
+sendMessageString	KEYWORD2
+sendMessageCChar	KEYWORD2
+checkForMessage	KEYWORD2
+handshake	KEYWORD2
+onMessage	KEYWORD2

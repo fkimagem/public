@@ -1,0 +1,170 @@
+#define pinA 13
+#define pinB 14
+
+#define QTD 20
+#define LIMIAR 10000
+
+#define keyCount 20
+#define keyPerKeyboard 10
+
+#include <Arduino.h>
+#include "TecladoExterno.h"
+
+
+
+keyExtern_t keys1[keyPerKeyboard] = {
+    {64516, 'L'},
+    {51984, '7'},
+    {41616, '0'},
+    {33856, '8'},
+    {30976, '4'},
+    {23409, '5'},
+    {20449, '1'},
+    {16384, '2'},
+    {13689, 'A'},
+    {11449, 'B'},
+};
+
+keyExtern_t keys2[keyPerKeyboard] = {
+    {64250, 'R'},
+    {51076, '9'},
+    {41209, 'E'},
+    {33489, 'S'},
+    {30625, '6'},
+    {23104, 'D'},
+    {20449, '3'},
+    {16384, 'U'},
+    {13689, '#'},
+    {11236, '*'},
+};
+
+uint32_t ultimaA = 0;
+uint32_t ultimaB = 0;
+
+uint16_t dataA[5] = {0, 0, 0, 0, 0};
+uint16_t dataB[5] = {0, 0, 0, 0, 0};
+
+void shiftArray(uint16_t *array, uint16_t newValue, size_t size) {
+    memmove(array, array + 1, (size - 1) * sizeof(uint16_t));
+    array[size - 1] = newValue;
+}
+
+keyExtern_t procurarKey(uint32_t valor, keyExtern_t* keys, size_t size) {
+    keyExtern_t vazia;
+    vazia.avgValue = 0;
+    vazia.key = '0';
+
+    if(size < 2){
+        log_e("Size of array is too small");
+        return vazia;
+    }
+    log_d("Looking for key with value: %d", valor);
+
+    uint32_t primeiraMedia = (keys[0].avgValue + keys[1].avgValue)/2;// Como o size minimo é 2, tira a media entre os dois primeiros valores
+    uint32_t ultimaMedia = (keys[0].avgValue + keys[1].avgValue)/2;// Como o size minimo é 2, tira a media entre os dois primeiros valores
+    
+    // Se tiver mais de 2 teclas, faz a medias entre as duas primeiras e as duas ultimas
+    if(size > 2){
+        primeiraMedia = (keys[0].avgValue + keys[1].avgValue) / 2; //Media entre os dois primeiros valores
+        ultimaMedia = (keys[size - 2].avgValue + keys[size - 1].avgValue) / 2; //Media entre os dois ultimos valores
+    }
+
+    if(valor >= primeiraMedia){
+        log_d("Found first key");
+        return keys[0];
+    }else if(valor <= ultimaMedia){
+        log_d("Found last key");
+        return keys[size - 1];
+    }else{
+        log_d("Looking in array");
+        for(int i = 1; i < size; i++){
+            uint32_t media = (keys[i].avgValue + keys[i - 1].avgValue) / 2;
+            if(valor > media){
+                return keys[i-1];
+            }
+        }
+    }
+    
+    return vazia;
+}
+
+bool checkDeviation(uint16_t *array, size_t size, uint16_t threshold, float *media, float *desvio) {
+    float soma = 0.0;
+    float somaQuadrados = 0.0;
+
+    // Calcula a soma dos elementos
+    for (size_t i = 0; i < size; i++) {
+        soma += array[i];
+    }
+
+    // Calcula a média
+    *media = soma / size;
+
+    // Calcula a soma dos quadrados das diferenças em relação à média
+    for (size_t i = 0; i < size; i++) {
+        somaQuadrados += pow(array[i] - *media, 2);
+    }
+
+    // Calcula o desvio padrão
+    float desvioPadrao = sqrt(somaQuadrados / size);
+    (*desvio) = desvioPadrao;
+
+    // Retorna true se o desvio padrão for menor ou igual ao threshold
+    return desvioPadrao <= threshold;
+}
+
+void setup(){
+    pinMode(pinA, INPUT);
+    pinMode(pinB, INPUT);
+    analogReadResolution(10);
+    Serial.begin(115200);
+
+}
+
+void loop(){
+    uint32_t tempo = millis();
+    uint32_t leituraA = 0;
+    uint32_t leituraB = 0;
+    for(uint8_t i = 0; i < QTD; i++){
+        leituraA += analogRead(pinA);
+        leituraB += analogRead(pinB);
+    }
+    leituraA = leituraA / QTD;
+    leituraB = leituraB / QTD;
+
+    uint32_t diffA = leituraA - ultimaA;
+    uint32_t diffB = leituraB - ultimaB;
+    
+
+
+    ultimaA = (leituraA + ultimaA) / 2;
+    ultimaB = (leituraB + ultimaB) / 2;
+
+    shiftArray(dataA, ultimaA, 5);
+    shiftArray(dataB, ultimaB, 5);
+
+    float mediaA = 0.0;
+    float desvioA = 0.0;
+    float mediaB = 0.0;
+    float desvioB = 0.0;
+    bool estavelA = checkDeviation(dataA, 5, 2, &mediaA, &desvioA);
+    bool estavelB = checkDeviation(dataB, 5, 2, &mediaB, &desvioB);
+    int powA = (int)mediaA;
+    powA *= powA;
+    int powB = (int)mediaB;
+    powB *= powB;
+
+
+    tempo = millis() - tempo;
+
+    if(powA > LIMIAR && estavelA){
+        keyExtern_t tecla = procurarKey(powA, keys2, keyPerKeyboard);
+        Serial.printf("A,%i,%c\n", powA, tecla.key);
+    }else if(powB > LIMIAR && estavelB){
+        keyExtern_t tecla = procurarKey(powB, keys1, keyPerKeyboard);
+        Serial.printf("B,%i,%c\n", powB, tecla.key);
+    }
+    //Serial.printf("\n");
+    
+    delay(10);
+}

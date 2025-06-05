@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "C:/_IDEPortable/arduino1_8_19/portable/sketchbook/libraries/Arduino_GFX-master/src/display",
+                "C:/_IDEPortable/arduino1_8_19/portable/sketchbook/libraries/FT6236-1.0.2"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "ESP32",
+                "CONFIG_IDF_TARGET_ESP32C3"
+            ],
+            "windowsSdkVersion": "10.0.22000.0",
+            "compilerPath": "cl.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
