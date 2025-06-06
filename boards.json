@@ -3,18 +3,20 @@
   {"id": 5, "name": "ES32S3 IPS 480x270 capacitive GT911", "tags": "ips,esp32,s3,480,270,capacitive,gt911,yellow,touch", "idDisplay": 4, "idTouch": 1, "image": "images/displays/esp324827s043_gt911.jpg" },
   {"id": 6, "name": "ESP32S3 TFT 4.0 800x480 resistive XPT2046", "tags": "tft,s3,800,480,resistive,xpt2046,touch", "idDisplay": 2, "idTouch": 2, "image": "images/displays/esp328048s043_xpt2046.jpg" },
   {"id": 7, "name": "ILI9488 TFT 4.0 capacitive FT6236", "tags": "tft,ili9488,capacitive,ft6236u,touch,480,320", "idDisplay": 1, "idTouch": 3, "image": "images/displays/ili9488_ft6236.jpg" },
-  {"id": 8, "name": "ILI9488 TFT 4.0 resistive XPT2046", "tags": "tft,ili9488,resistive,xpt2046,touch,480,320", "idDisplay": 1, "idTouch": 2, "image": "images/displays/ili9488_xpt2046_4pol.jpg" }
+  {"id": 8, "name": "ILI9488 TFT 4.0 resistive XPT2046", "tags": "tft,ili9488,resistive,xpt2046,touch,480,320", "idDisplay": 1, "idTouch": 2, "image": "images/displays/ili9488_xpt2046_4pol.jpg" },
+  {"id": 9, "name": "Yellow board ILI9488 + FT6336U", "tags": "tft,ili9488,resistive,ft6336u,touch,480,320", "idDisplay": 1, "idTouch": 5, "image": "images/displays/ili9488_xpt2046_4pol.jpg" }
 ],
 "touch": [
 	{"id": 1, "name": "GT911", "defineName": "TOUCH_GT911", "needCalibration": false, "connectionType": "I2C"},
 	{"id": 2, "name": "XPT2046", "defineName": "TOUCH_XPT2046", "needCalibration": true, "connectionType": "SPI"},
-	{"id": 3, "name": "FT6236U", "defineName": "TOUCH_FT6236U", "needCalibration": true, "connectionType": "I2C"},
-	{"id": 4, "name": "CST816", "defineName": "TOUCH_CST816", "needCalibration": true, "connectionType": "I2C"}
+	{"id": 3, "name": "FT6236U", "defineName": "TOUCH_FT6236U", "needCalibration": false, "connectionType": "I2C"},
+	{"id": 4, "name": "CST816", "defineName": "TOUCH_CST816", "needCalibration": false, "connectionType": "I2C"},
+	{"id": 5, "name": "FT6336U", "defineName": "TOUCH_FT6336U", "needCalibration": false, "connectionType": "I2C"}
 ],
 "display": [
 	{"id": 1, "name": "ILI9488", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 480, "height": 320}},
 	{"id": 2, "name": "ESP32-8048S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 800, "height": 480}},
 	{"id": 4, "name": "ESP32-4827S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 480, "height": 272}},
-	{"id": 5, "name": "GC9A01", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}}
+	{"id": 5, "name": "GC9A01", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}},
 ]
 }
