@@ -17,6 +17,6 @@
 	{"id": 1, "name": "ILI9488", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 480, "height": 320}},
 	{"id": 2, "name": "ESP32-8048S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 800, "height": 480}},
 	{"id": 4, "name": "ESP32-4827S043", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 480, "height": 272}},
-	{"id": 5, "name": "GC9A01", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}},
+	{"id": 5, "name": "GC9A01", "libModel": "DEFAULT", "separator": "->", "defaultSize": {"width": 240, "height": 240}}
 ]
 }
