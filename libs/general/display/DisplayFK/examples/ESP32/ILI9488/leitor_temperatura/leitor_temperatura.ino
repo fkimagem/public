@@ -81,7 +81,7 @@ int maxTempAllowed = 45; // Valor inicial do widget spinbox
 
 // ToggleButton (botão de seleção true/false)
 const uint8_t qtdToggleBtn = 5; // Quantidade de widgets toggleButton no projeto
-ToggleButton arrayTogglebtn[qtdToggleBtn] = {ToggleButton(80, 205, 0), ToggleButton(175, 205, 0), ToggleButton(265, 205, 0), ToggleButton(80, 265, 0), ToggleButton(175, 265, 0)}; // Widget toggleButton
+ToggleButton arrayTogglebtn[qtdToggleBtn] = {ToggleButton(80, 205, 0), ToggleButton(175, 205, 0), ToggleButton(265, 205, 0), ToggleButton(80, 250, 0), ToggleButton(175, 250, 0)}; // Widget toggleButton
 
 // Imagem
 const uint8_t qtdImagem = 2; // Quantidade de widgets imagem no projeto
@@ -108,6 +108,7 @@ void setup(){ // Função de setup
     WidgetBase::objTFT = tft; // Referência para o objeto para desenhar na tela
     myDisplay.startTouch(DISPLAY_W, DISPLAY_H, rotationScreen, &spi_shared); // Inicializa a comunicação com o touch controller
     myDisplay.checkCalibration(); // Verifica e aplica os valores de calibração
+    myDisplay.disableTouchLog();
     loadWidgets(); // Carrega os widgets
 
     sensors_1.begin(); // Inicializa o sensor de temperatura
@@ -271,9 +272,9 @@ void screen0(){
     WidgetBase::backgroundColor = CFK_GREY4; // Define a cor de fundo da tela
     myDisplay.printText("Sensor temp", 170, 12, TL_DATUM, CFK_LIME, CFK_GREY4, &Roboto_Regular10pt7b); // Imprime o texto "Sensor temp" na tela
     myDisplay.printText("LEDs", 15, 212, TL_DATUM, CFK_LIME, CFK_GREY4, &Roboto_Regular10pt7b); // Imprime o texto "LEDs" na tela
-    myDisplay.printText("Reles", 15, 272, TL_DATUM, CFK_LIME, CFK_GREY4, &Roboto_Regular10pt7b); // Imprime o texto "Reles" na tela
-    myDisplay.printText("Mot", 65, 297, TL_DATUM, CFK_LIME, CFK_WHITE, &Roboto_Regular10pt7b); // Texto do motor
-    myDisplay.printText("Bomb", 115, 297, TL_DATUM, CFK_LIME, CFK_WHITE, &Roboto_Regular10pt7b); // Texto da bomba dagua
+    myDisplay.printText("Reles", 15, 262, TL_DATUM, CFK_LIME, CFK_GREY4, &Roboto_Regular10pt7b); // Imprime o texto "Reles" na tela
+    myDisplay.printText("Motor", 90, 297, TL_DATUM, CFK_LIME, CFK_GREY4, &Roboto_Regular10pt7b); // Texto do motor
+    myDisplay.printText("Compr.", 180, 297, TL_DATUM, CFK_LIME, CFK_GREY4, &Roboto_Regular10pt7b); // Texto da bomba dagua
     myDisplay.drawWidgetsOnScreen(0); // Desenha os widgets na tela
 }
 
