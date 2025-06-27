@@ -111,6 +111,7 @@ private:
     static logMessage_t bufferLog[LOG_LENGTH]; ///< Array of log messages.
     static uint8_t logIndex; ///< Index of the next log message to be written.
     static uint16_t logFileCount; ///< Number of log files created
+    bool m_debugTouch = false;
     
 
 
@@ -304,6 +305,8 @@ public:
     void createTask();
     void drawPng(uint16_t _x, uint16_t _y, const uint16_t _colors[], const uint8_t _mask[], uint16_t _w, uint16_t _h);
     void printText(const char* _texto, uint16_t _x, uint16_t _y, uint8_t _datum, uint16_t _colorText, uint16_t _colorPadding, const GFXfont* _font);
+    void enableTouchLog();
+    void disableTouchLog();
 
 #if (HAS_TOUCH)
 #if defined(TOUCH_XPT2046)

@@ -2068,10 +2068,10 @@ void DisplayFK::loopTask() {
 #endif
 
     if (hasTouch) {
-        #if defined(DEBUG_TOUCH)
-        Serial.printf("Touch event: [%i, %i], %i, %i\n", xTouch, yTouch, zPressure, gesture);
-        WidgetBase::objTFT->fillCircle(xTouch, yTouch, 2, CFK_FUCHSIA);
-        #endif
+        if(m_debugTouch){
+            Serial.printf("Touch event: [%i, %i], %i, %i\n", xTouch, yTouch, zPressure, gesture);
+            WidgetBase::objTFT->fillCircle(xTouch, yTouch, 2, CFK_FUCHSIA);
+        }
         processTouchEvent(xTouch, yTouch, zPressure, gesture);
     }
 #endif
@@ -2111,6 +2111,16 @@ void DisplayFK::TaskEventoTouch(void *pvParameters)
 TaskHandle_t DisplayFK::getTaskHandle()
 {
     return m_hndTaskEventoTouch;
+}
+
+/** @brief Enables touch log */
+void DisplayFK::enableTouchLog(){
+    m_debugTouch = true;
+}
+
+/** @brief Disables touch log */
+void DisplayFK::disableTouchLog(){
+    m_debugTouch = false;
 }
 
 #if defined(TOUCH_XPT2046) && HAS_TOUCH
