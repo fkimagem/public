@@ -28,6 +28,17 @@ void TAMC_GT911::reset() {
   // attachInterrupt(pinInt, TAMC_GT911::onInterrupt, RISING);
   delay(50);
   readBlockData(configBuf, GT911_CONFIG_START, GT911_CONFIG_SIZE);
+  m_savedX = configBuf[GT911_X_OUTPUT_MAX_LOW - GT911_CONFIG_START] |
+                 (configBuf[GT911_X_OUTPUT_MAX_HIGH - GT911_CONFIG_START] << 8);
+  m_savedY = configBuf[GT911_Y_OUTPUT_MAX_LOW - GT911_CONFIG_START] |
+                 (configBuf[GT911_Y_OUTPUT_MAX_HIGH - GT911_CONFIG_START] << 8);
+
+  Serial.print("GT911 config resolution: ");
+  Serial.print(m_savedX);
+  Serial.print("x");
+  Serial.println(m_savedY);
+
+
   setResolution(width, height);
 }
 void TAMC_GT911::calculateChecksum() {
@@ -51,6 +62,7 @@ void TAMC_GT911::setRotation(uint8_t rot) {
   rotation = rot;
 }
 void TAMC_GT911::setResolution(uint16_t _width, uint16_t _height) {
+  Serial.printf("Update resolution: %i x %i\n", _width, _height);
   configBuf[GT911_X_OUTPUT_MAX_LOW - GT911_CONFIG_START] = lowByte(_width);
   configBuf[GT911_X_OUTPUT_MAX_HIGH - GT911_CONFIG_START] = highByte(_width);
   configBuf[GT911_Y_OUTPUT_MAX_LOW - GT911_CONFIG_START] = lowByte(_height);
@@ -92,6 +104,12 @@ TP_Point TAMC_GT911::readPoint(uint8_t *data) {
   uint16_t x = data[1] + (data[2] << 8);
   uint16_t y = data[3] + (data[4] << 8);
   uint16_t size = data[5] + (data[6] << 8);
+
+  // Corrigir resolução antes da rotação
+  x = map(x, 0, m_savedX, 0, width);   // Ajustar para 800
+  y = map(y, 0, m_savedY, 0, height);  // Ajustar para 480
+
+
   switch (rotation){
     case ROTATION_NORMAL:
       x = width - x;

@@ -1,14 +1,69 @@
 #include "touch.h"
 
-/**
- * @brief Constructor for the TouchScreen class.
- */
+#if defined(TOUCH_FT6236U)
+//TouchScreen *TouchScreen::m_instance = nullptr;
+#endif
+
 TouchScreen::TouchScreen()
 {
-#if HAS_TOUCH
-  touch_init();
-#endif
+  
 }
+
+#if defined(TOUCH_XPT2046)
+void TouchScreen::startAsXPT2046(uint16_t w, uint16_t h, uint8_t _rotation, uint8_t pinSclk,uint8_t pinMosi, uint8_t pinMiso, uint8_t pinCS, SPIClass *_sharedSPI, Arduino_GFX *_objTFT){
+  m_ts = new XPT2046(pinSclk, pinMiso, pinMosi, pinCS);
+  this->setDimension(w, h, _rotation);
+  m_objTFT = _objTFT;
+  m_spitoque = _sharedSPI;
+  m_pinCS = pinCS;
+  if(m_pinCS){
+    pinMode(m_pinCS, OUTPUT);
+    digitalWrite(m_pinCS, HIGH);
+  }
+  touch_init();
+}
+#elif defined(TOUCH_FT6236U)
+void TouchScreen::startAsFT6236U(uint16_t w, uint16_t h, uint8_t _rotation, uint8_t pinSDA, uint8_t pinSCL, uint8_t pinINT, uint8_t pinRST){
+  m_ts = new FT6236();
+  this->setDimension(w, h, _rotation);
+  m_pinSCL = pinSCL;
+  m_pinSDA = pinSDA;
+  m_pinINT = pinINT;
+  m_pinRST = pinRST;
+  touch_init();
+}
+#elif defined(TOUCH_FT6336)
+void TouchScreen::startAsFT6336(uint16_t w, uint16_t h, uint8_t _rotation, uint8_t pinSDA, uint8_t pinSCL, uint8_t pinINT, uint8_t pinRST){
+  m_ts = new FT6336U(pinSDA, pinSCL, pinRST, pinINT);
+  this->setDimension(w, h, _rotation);
+  m_pinSCL = pinSCL;
+  m_pinSDA = pinSDA;
+  m_pinINT = pinINT;
+  m_pinRST = pinRST;
+  touch_init();
+}
+#elif defined(TOUCH_CST816)
+void TouchScreen::startAsCST816(uint16_t w, uint16_t h, uint8_t _rotation, uint8_t pinSDA, uint8_t pinSCL, uint8_t pinINT, uint8_t pinRST){
+ m_ts = new CST816S(pinSDA, pinSCL, pinRST, pinINT);
+ this->setDimension(w, h, _rotation);
+ m_pinSCL = pinSCL;
+m_pinSDA = pinSDA;
+m_pinINT = pinINT;
+m_pinRST = pinRST;
+ touch_init();
+}
+#elif defined(TOUCH_GT911)
+void TouchScreen::startAsGT911(uint16_t w, uint16_t h, uint8_t _rotation, uint8_t pinSDA, uint8_t pinSCL, uint8_t pinINT, uint8_t pinRST){
+//m_ts = new TAMC_GT911(pinSDA, pinSCL, pinINT, pinRST, max(TOUCH_MAP_X1, TOUCH_MAP_X2), max(TOUCH_MAP_Y1, TOUCH_MAP_Y2));
+this->setDimension(w, h, _rotation);
+m_ts = new TAMC_GT911(pinSDA, pinSCL, pinINT, pinRST, m_widthScreen, m_heightScreen);
+m_pinSCL = pinSCL;
+m_pinSDA = pinSDA;
+m_pinINT = pinINT;
+m_pinRST = pinRST;
+touch_init();
+}
+#endif
 
 uint16_t TouchScreen::getWidthScreen()
 {
@@ -33,25 +88,14 @@ uint16_t TouchScreen::getHeightScreen()
  */
 TouchScreen::~TouchScreen()
 {
+  if(m_ts){
+    delete m_ts;
+  }
 }
 
-#if defined(TOUCH_XPT2046) && HAS_TOUCH
-/**
- * @brief Constructor for the TouchScreen class with display and SPI instances.
- * @param _objTFT Pointer to the display object.
- * @param _sharedSPI Pointer to a shared SPI instance.
- */
-TouchScreen::TouchScreen(Arduino_GFX *_objTFT, SPIClass *_sharedSPI)
-{
-  Serial.println("Iniciou GFX no touch");
-  m_objTFT = _objTFT;
-  m_spitoque = _sharedSPI;
-  touch_init();
-}
-#endif
 
 
-#if defined(TOUCH_FT6X36)
+#if defined(TOUCH_FT6236)
 TouchScreen *TouchScreen::m_instance = nullptr;
 
 /**
@@ -104,44 +148,28 @@ void TouchScreen::touch(TPoint p, TEvent e)
  */
 void TouchScreen::touch_init()
 {
-#if defined(TOUCH_FT6X36)
-  m_ts = new FT6X36(&Wire, TOUCH_FT6X36_INT);
-  m_instance = this;
-
-  Wire.begin(TOUCH_FT6X36_SDA, TOUCH_FT6X36_SCL);
-  if (m_ts->begin())
-  {
-    m_ts->registerTouchHandler(touchHandler);
-    Serial.print("Iniciou touch");
-  }
-  else
-  {
-    Serial.print("Erro ao iniciar touch");
-  }
-
-#elif defined(TOUCH_GT911)
-  // Wire.begin(TOUCH_GT911_SDA, TOUCH_GT911_SCL);
-  m_ts.begin();
-  m_ts.setRotation(TOUCH_GT911_ROTATION);
+#if defined(TOUCH_GT911)
+  m_ts->begin();
+  m_ts->setRotation(m_rotation);
 
 #elif defined(TOUCH_XPT2046)
 
-#if defined(DISP_CS)
-  pinMode(DISP_CS, OUTPUT);
-  log_d("Configuring display CS pin as output on gpio %i", DISP_CS);
-#endif
-
-#if defined(DISP_CS)
+#if defined (DISP_CS)
   digitalWrite(DISP_CS, HIGH);
   delayMicroseconds(5);
 #endif
-  m_ts.begin(m_spitoque, TOUCH_FREQUENCY, DISP_FREQUENCY);
-#if defined(DISP_CS)
+
+  
+  m_ts->begin(m_spitoque, TOUCH_FREQUENCY, DISP_FREQUENCY);
+
+  
+#if defined (DISP_CS)
   delayMicroseconds(5);
   digitalWrite(DISP_CS, LOW);
-#endif
+  #endif
+
 #elif defined(TOUCH_FT6236U)
-  if (!m_ts.begin(40, TOUCH_FT6X36_SDA, TOUCH_FT6X36_SCL)) // 40 in this case represents the sensitivity. Try higer or lower for better response.
+  if (!m_ts->begin(40, m_pinSDA, m_pinSCL)) // 40 in this case represents the sensitivity. Try higer or lower for better response.
   {
     Serial.println("Unable to start the capacitive touchscreen.");
   }
@@ -150,9 +178,9 @@ void TouchScreen::touch_init()
     Serial.println("Touch initialized.");
   }
 #elif defined(TOUCH_CST816)
-  m_ts.begin();
+  m_ts->begin();
 #elif defined(TOUCH_FT6336U)
-  m_ts.begin();
+  m_ts->begin();
   showSetup();
 #endif
 }
@@ -161,45 +189,40 @@ void TouchScreen::touch_init()
 void TouchScreen::showSetup()
 {
   Serial.print("FT6336U Device Mode: ");
-  Serial.println(m_ts.read_device_mode());
+  Serial.println(m_ts->read_device_mode());
   Serial.print("FT6336U Threshold: 0x");
-  Serial.println(m_ts.read_touch_threshold(), HEX);
+  Serial.println(m_ts->read_touch_threshold(), HEX);
   Serial.print("FT6336U Filter Coefficient: 0x");
-  Serial.println(m_ts.read_filter_coefficient(), HEX);
+  Serial.println(m_ts->read_filter_coefficient(), HEX);
   Serial.print("FT6336U Control Mode: 0x");
-  Serial.println(m_ts.read_ctrl_mode(), HEX);
+  Serial.println(m_ts->read_ctrl_mode(), HEX);
   Serial.print("FT6336U Time Period for enter to Monitor Mode: 0x");
-  Serial.println(m_ts.read_time_period_enter_monitor(), HEX);
+  Serial.println(m_ts->read_time_period_enter_monitor(), HEX);
   Serial.print("FT6336U Active Rate: 0x");
-  Serial.println(m_ts.read_active_rate(), HEX);
+  Serial.println(m_ts->read_active_rate(), HEX);
   Serial.print("FT6336U Monitor Rate: 0x");
-  Serial.println(m_ts.read_monitor_rate(), HEX);
+  Serial.println(m_ts->read_monitor_rate(), HEX);
 
   Serial.print("FT6336U LIB Ver: 0x");
-  Serial.println(m_ts.read_library_version(), HEX);
+  Serial.println(m_ts->read_library_version(), HEX);
   Serial.print("FT6336U Chip ID: 0x");
-  Serial.println(m_ts.read_chip_id(), HEX);
+  Serial.println(m_ts->read_chip_id(), HEX);
   Serial.print("FT6336U G Mode: 0x");
-  Serial.println(m_ts.read_g_mode(), HEX);
+  Serial.println(m_ts->read_g_mode(), HEX);
   Serial.print("FT6336U POWER Mode: 0x");
-  Serial.println(m_ts.read_pwrmode(), HEX);
+  Serial.println(m_ts->read_pwrmode(), HEX);
   Serial.print("FT6336U Firm ID: 0x");
-  Serial.println(m_ts.read_firmware_id(), HEX);
+  Serial.println(m_ts->read_firmware_id(), HEX);
   Serial.print("FT6336U Focal Tehc ID: 0x");
-  Serial.println(m_ts.read_focaltech_id(), HEX);
+  Serial.println(m_ts->read_focaltech_id(), HEX);
   Serial.print("FT6336U Release Code ID: 0x");
-  Serial.println(m_ts.read_release_code_id(), HEX);
+  Serial.println(m_ts->read_release_code_id(), HEX);
   Serial.print("FT6336U State: 0x");
-  Serial.println(m_ts.read_state(), HEX);
+  Serial.println(m_ts->read_state(), HEX);
 }
 #endif
 
-/**
- * @brief Sets the dimensions of the touch screen.
- * @param _widthScreen Width of the screen.
- * @param _heightScreen Height of the screen.
- * @param _rotation Rotation of the screen.
- */
+
 void TouchScreen::setDimension(uint16_t _widthScreen, uint16_t _heightScreen, uint8_t _rotation)
 {
   m_widthScreen = _widthScreen;
@@ -214,7 +237,7 @@ void TouchScreen::setDimension(uint16_t _widthScreen, uint16_t _heightScreen, ui
  */
 bool TouchScreen::touch_has_signal()
 {
-#if defined(TOUCH_FT6X36)
+#if defined(TOUCH_FT6236)
   m_ts->loop();
   return m_touch_touched_flag || m_touch_released_flag;
 
@@ -222,14 +245,13 @@ bool TouchScreen::touch_has_signal()
   return true;
 
 #elif defined(TOUCH_XPT2046)
-  // return ts.tirqTouched();
   return true;
 #elif defined(TOUCH_FT6236U)
   return true;
 #elif defined(TOUCH_CST816)
   return true;
 #elif defined(TOUCH_FT6336U)
-  tp = m_ts.scan();
+  tp = m_ts->scan();
   return tp.touch_count > 0;
 #else
   return false;
@@ -242,7 +264,7 @@ bool TouchScreen::touch_has_signal()
  */
 bool TouchScreen::touch_touched()
 {
-#if defined(TOUCH_FT6X36) && HAS_TOUCH
+#if defined(TOUCH_FT6236) && HAS_TOUCH
   if (m_touch_touched_flag)
   {
     m_touch_touched_flag = false;
@@ -257,18 +279,18 @@ bool TouchScreen::touch_touched()
   }
 
 #elif defined(TOUCH_GT911) && HAS_TOUCH
-  m_ts.read();
-  if (m_ts.isTouched)
+  m_ts->read();
+  if (m_ts->isTouched)
   {
 #if defined(TOUCH_SWAP_XY)
-    m_touch_last_x = map(m_ts.points[0].y, TOUCH_MAP_X1, TOUCH_MAP_X2, 0, m_widthScreen - 1);
-    m_touch_last_y = map(m_ts.points[0].x, TOUCH_MAP_Y1, TOUCH_MAP_Y2, 0, m_heightScreen - 1);
+    m_touch_last_x = map(m_ts->points[0].y, TOUCH_MAP_X1, TOUCH_MAP_X2, 0, m_widthScreen - 1);
+    m_touch_last_y = map(m_ts->points[0].x, TOUCH_MAP_Y1, TOUCH_MAP_Y2, 0, m_heightScreen - 1);
     m_touch_last_z = -1;
 #else
     // Raw touch coordinates
-    Serial.printf("Raw touch coordinates: %i, %i\n", m_ts.points[0].x, m_ts.points[0].y);
-    m_touch_last_x = map(m_ts.points[0].x, TOUCH_MAP_X1, TOUCH_MAP_X2, 0, m_widthScreen - 1);
-    m_touch_last_y = map(m_ts.points[0].y, TOUCH_MAP_Y1, TOUCH_MAP_Y2, 0, m_heightScreen - 1);
+    Serial.printf("Raw touch coordinates: %i, %i\n", m_ts->points[0].x, m_ts->points[0].y);
+    m_touch_last_x = map(m_ts->points[0].x, TOUCH_MAP_X1, TOUCH_MAP_X2, 0, m_widthScreen - 1);
+    m_touch_last_y = map(m_ts->points[0].y, TOUCH_MAP_Y1, TOUCH_MAP_Y2, 0, m_heightScreen - 1);
     m_touch_last_z = -1;
 #endif
 
@@ -287,23 +309,17 @@ bool TouchScreen::touch_touched()
     return false;
   }
 
-#if defined(DISP_CS)
-  // digitalWrite(DISP_CS, HIGH);
-  // delayMicroseconds(5);
-  // delay(5);
-  // log_d("Pino %i modo HIGH", DISP_CS);
-#endif
 
   int16_t xTouch = 0, yTouch = 0, zTouch = 0;
   int16_t touchAmount = 8;
   uint8_t touchDetect = touchAmount;
   // bool validTouch = false;
 
-  while (m_ts.getInputBodmer() && touchDetect > 0)
+  while (m_ts->getInputBodmer() && touchDetect > 0)
   {
-    xTouch += m_ts.x;
-    yTouch += m_ts.y;
-    zTouch += m_ts.z;
+    xTouch += m_ts->x;
+    yTouch += m_ts->y;
+    zTouch += m_ts->z;
     touchDetect--;
   }
   xTouch /= touchAmount;
@@ -321,28 +337,22 @@ bool TouchScreen::touch_touched()
   if (hasTouch)
   {
 
+    Serial.printf("Raw xyz[%i\t%i\t%i]\n", xTouch, yTouch, zTouch);
     ScreenPoint_t toque = getScreenPosition(xTouch, yTouch); // Raw XY touch converted to XY screen
                                                              // Serial.printf("Raw xyz[%i\t%i\t%i]\n", xTouch, yTouch, zTouch);
                                                              // Serial.printf("Scr xyz[%i\t%i\t%i]\n", toque.x, toque.y, zTouch);
 
 #if defined(TOUCH_SWAP_XY)
 
-    m_ts.x = constrain(xTouch, m_calibMatrix[2], m_calibMatrix[3]);
-    m_ts.y = constrain(yTouch, m_calibMatrix[0], m_calibMatrix[1]);
+    m_ts->x = constrain(xTouch, m_calibMatrix[2], m_calibMatrix[3]);
+    m_ts->y = constrain(yTouch, m_calibMatrix[0], m_calibMatrix[1]);
 
-    // touch_last_x = map(ts.y, TOUCH_MAP_X1, TOUCH_MAP_X2, 0, widthScreen - 1);
-    // touch_last_y = map(ts.x, TOUCH_MAP_Y1, TOUCH_MAP_Y2, 0, heightScreen - 1);
-
-    m_touch_last_x = map(m_ts.y, m_calibMatrix[0], m_calibMatrix[1], 0, m_widthScreen - 1);
-    m_touch_last_y = map(m_ts.x, m_calibMatrix[2], m_calibMatrix[3], 0, m_heightScreen - 1);
+    m_touch_last_x = map(m_ts->y, m_calibMatrix[0], m_calibMatrix[1], 0, m_widthScreen - 1);
+    m_touch_last_y = map(m_ts->x, m_calibMatrix[2], m_calibMatrix[3], 0, m_heightScreen - 1);
 #else
     m_touch_last_x = toque.x;
     m_touch_last_y = toque.y;
     m_touch_last_z = zTouch;
-    // ts.x = constrain(xTouch, calibration[0], calibration[1]);
-    // ts.y = constrain(yTouch, calibration[2], calibration[3]);
-    // touch_last_x = map(ts.x, calibration[0], calibration[1], 0, widthScreen - 1);
-    // touch_last_y = map(ts.y, calibration[2], calibration[3], 0, heightScreen - 1);
 #endif
 
     return true;
@@ -353,10 +363,10 @@ bool TouchScreen::touch_touched()
   }
 
 #elif defined(TOUCH_FT6236U) && HAS_TOUCH
-  if (m_ts.touched())
+  if (m_ts->touched())
   {
     // Retrieve a point
-    TS_Point p = m_ts.getPoint();
+    TS_Point p = m_ts->getPoint();
 
     // Print coordinates to the serial output
     // Serial.printf("X: %i, Y: %i\n", p.x, p.y);
@@ -381,12 +391,12 @@ bool TouchScreen::touch_touched()
   bool touched;
   uint8_t gesture;
   uint16_t touchX, touchY;
-  touched = m_ts.available();
+  touched = m_ts->available();
   if (touched)
   {
-    m_touch_last_x = m_ts.data.x;
-    m_touch_last_y = m_ts.data.y;
-    m_gesture = m_ts.data.gestureID;
+    m_touch_last_x = m_ts->data.x;
+    m_touch_last_y = m_ts->data.y;
+    m_gesture = m_ts->data.gestureID;
     m_touch_last_z = -1;
   }
 
@@ -440,7 +450,7 @@ bool TouchScreen::touch_touched()
  */
 bool TouchScreen::touch_released()
 {
-#if defined(TOUCH_FT6X36)
+#if defined(TOUCH_FT6236)
   if (m_touch_released_flag)
   {
     m_touch_released_flag = false;
@@ -464,7 +474,7 @@ bool TouchScreen::touch_released()
 #endif
 }
 
-#if defined(TOUCH_FT6X36)
+#if defined(TOUCH_FT6236)
 /**
  * @brief Handles touch events.
  * @param p Touch point.
@@ -493,7 +503,7 @@ uint8_t TouchScreen::getRotation()
  * @brief Sets the calibration of the touch screen.
  * @param array Array of calibration points.
  */
-#if HAS_TOUCH
+#if HAS_TOUCH && defined(TOUCH_XPT2046)
 void TouchScreen::setCalibration(CalibrationPoint_t *array)
 {
   delete[] m_calibMatrix;
@@ -530,7 +540,7 @@ void TouchScreen::setCalibration(CalibrationPoint_t *array)
  * @param color_bg Color of the background.
  * @param size Size of the calibration points.
  */
-#if HAS_TOUCH
+#if HAS_TOUCH && defined(TOUCH_XPT2046)
 void TouchScreen::calibrateTouch9Points(uint16_t *parameters, uint32_t color_fg, uint32_t color_bg, uint8_t size)
 {
   int16_t values[18] = {0}; // 9 pontos (x, y) = 18 valores
@@ -579,11 +589,11 @@ void TouchScreen::calibrateTouch9Points(uint16_t *parameters, uint32_t color_fg,
     Serial.printf("Calibrando ponto %d\n", i);
     for (uint8_t j = 0; j < 8; j++) // Média de 8 leituras para cada ponto
     {
-      while (!m_ts.getInputBodmer())
+      while (!m_ts->getInputBodmer())
         ; // Aguarde até detectar o toque
-      values[i * 2] += m_ts.x;
-      values[i * 2 + 1] += m_ts.y;
-      Serial.printf("{%d\t%d\t%d}\n", m_ts.x, m_ts.y, m_ts.z);
+      values[i * 2] += m_ts->x;
+      values[i * 2 + 1] += m_ts->y;
+      Serial.printf("{%d\t%d\t%d}\n", m_ts->x, m_ts->y, m_ts->z);
     }
 
     values[i * 2] /= 8;
@@ -649,7 +659,7 @@ void TouchScreen::calibrateTouch9Points(uint16_t *parameters, uint32_t color_fg,
  * @param color_bg Color of the background.
  * @param sizeMarker Size of the marker.
  */
-#if HAS_TOUCH
+#if HAS_TOUCH && defined(TOUCH_XPT2046)
 void TouchScreen::calibrateTouchEstrutura(CalibrationPoint_t *points, uint8_t length, Rect_t *rectScreen, uint32_t color_fg, uint32_t color_bg, uint8_t sizeMarker)
 {
   // CalibrationPoint_t points[4];
@@ -715,12 +725,12 @@ void TouchScreen::calibrateTouchEstrutura(CalibrationPoint_t *points, uint8_t le
 
     for (uint8_t j = 0; j < captureCount; j++)
     {
-      while (!m_ts.getInputBodmer())
+      while (!m_ts->getInputBodmer())
         ;
-      Serial.printf("%i, %i\n", m_ts.x, m_ts.y);
-      points[i].xTouch += m_ts.x;
-      points[i].yTouch += m_ts.y;
-      Serial.printf("{%i\t%i\t%i}\n", m_ts.x, m_ts.y, m_ts.z);
+      Serial.printf("%i, %i\n", m_ts->x, m_ts->y);
+      points[i].xTouch += m_ts->x;
+      points[i].yTouch += m_ts->y;
+      Serial.printf("{%i\t%i\t%i}\n", m_ts->x, m_ts->y, m_ts->z);
     }
     points[i].xTouch /= captureCount;
     points[i].yTouch /= captureCount;
@@ -800,6 +810,32 @@ void TouchScreen::calibrateTouchEstrutura(CalibrationPoint_t *points, uint8_t le
  * @param color Color of the star.
  */
 #if defined(TOUCH_XPT2046) && HAS_TOUCH
+
+CalibrationPoint_t TouchScreen::getMinPoint(CalibrationPoint_t pontos[4]) {
+  CalibrationPoint_t minPoint = pontos[0];
+
+  for (int i = 1; i < 4; ++i) {
+    if (pontos[i].xTouch < minPoint.xTouch && pontos[i].yTouch < minPoint.yTouch) {
+      minPoint = pontos[i];
+    }
+  }
+
+  return minPoint;
+}
+
+// Retorna o ponto com o maior xTouch e maior yTouch
+CalibrationPoint_t TouchScreen::getMaxPoint(CalibrationPoint_t pontos[4]) {
+  CalibrationPoint_t maxPoint = pontos[0];
+
+  for (int i = 1; i < 4; ++i) {
+    if (pontos[i].xTouch > maxPoint.xTouch && pontos[i].yTouch > maxPoint.yTouch) {
+      maxPoint = pontos[i];
+    }
+  }
+
+  return maxPoint;
+}
+
 void TouchScreen::drawStar(int16_t xPos, int16_t yPos, uint8_t size, uint16_t color)
 {
   if (m_objTFT)
@@ -818,82 +854,77 @@ void TouchScreen::drawStar(int16_t xPos, int16_t yPos, uint8_t size, uint16_t co
 #if defined(TOUCH_XPT2046) && HAS_TOUCH
 ScreenPoint_t TouchScreen::getScreenPosition(int16_t xTouch, int16_t yTouch)
 {
-  ScreenPoint_t screenPos;
+  ScreenPoint_t screenPos = {0, 0};
 
   if (!m_calibMatrix)
-  {
-    screenPos.x = 0;
-    screenPos.y = 0;
-
     return screenPos;
-  }
 
-  // Print raw touch coordinates
-  // Serial.printf("Raw touch coordinates: %i, %i\n", xTouch, yTouch);
+  Serial.printf("Get screen position for xTouch: %i and yTouch: %i\n", xTouch, yTouch);
 
-  CalibrationPoint_t cornerMin = m_calibMatrix[3];
-  CalibrationPoint_t cornerMax = m_calibMatrix[1];
+  CalibrationPoint_t cornerMin = getMinPoint(m_calibMatrix);
+  CalibrationPoint_t cornerMax = getMaxPoint(m_calibMatrix);
 
-  // Show map points
+  xTouch = constrain(xTouch, cornerMin.xTouch, cornerMax.xTouch);
+  yTouch = constrain(yTouch, cornerMin.yTouch, cornerMax.yTouch);
+
+  int16_t xMapFrom, xMapTo, yMapFrom, yMapTo;
+  int16_t xMapVal, yMapVal;
 
   switch (m_rotation)
   {
-  case 0:
-  {
+    case 0:
+      xMapVal = xTouch;
+      yMapVal = yTouch;
 
-    xTouch = constrain(xTouch, cornerMin.xTouch, cornerMax.xTouch);
-    yTouch = constrain(yTouch, cornerMin.yTouch, cornerMax.yTouch);
+      xMapFrom = TOUCH_INVERT_X ? cornerMax.xTouch : cornerMin.xTouch;
+      xMapTo   = TOUCH_INVERT_X ? cornerMin.xTouch : cornerMax.xTouch;
 
-    screenPos.x = map(xTouch, cornerMin.xTouch, cornerMax.xTouch, 0, m_widthScreen);
-    screenPos.y = map(yTouch, cornerMax.yTouch, cornerMin.yTouch, 0, m_heightScreen);
+      yMapFrom = TOUCH_INVERT_Y ? cornerMin.yTouch : cornerMax.yTouch;
+      yMapTo   = TOUCH_INVERT_Y ? cornerMax.yTouch : cornerMin.yTouch;
+      break;
 
-    Serial.printf("Map 0 xTouch: %i from %i and %i to %i and %i result: %i\n", xTouch, cornerMin.xTouch, cornerMax.xTouch, 0, m_widthScreen, screenPos.x);
-    Serial.printf("Map 0 yTouch: %i from %i and %i to %i and %i result: %i\n", yTouch, cornerMax.yTouch, cornerMin.yTouch, 0, m_heightScreen, screenPos.y);
-  }
-  break;
-  case 1:
-  {
-    xTouch = constrain(xTouch, cornerMin.xTouch, cornerMax.xTouch);
-    yTouch = constrain(yTouch, cornerMin.yTouch, cornerMax.yTouch);
+    case 1:
+      xMapVal = yTouch;
+      yMapVal = xTouch;
 
-    screenPos.x = map(yTouch, cornerMax.yTouch, cornerMin.yTouch, 0, m_widthScreen);
-    screenPos.y = map(xTouch, cornerMax.xTouch, cornerMin.xTouch, 0, m_heightScreen);
+      xMapFrom = TOUCH_INVERT_X ? cornerMin.yTouch : cornerMax.yTouch;
+      xMapTo   = TOUCH_INVERT_X ? cornerMax.yTouch : cornerMin.yTouch;
 
-    // Serial.printf("Map 1 xTouch: %i from %i and %i to %i and %i result: %i\n", yTouch, cornerMax.yTouch, cornerMin.yTouch, 0, m_widthScreen, screenPos.x);
-    // Serial.printf("Map 1 yTouch: %i from %i and %i to %i and %i result: %i\n", xTouch, cornerMax.xTouch, cornerMin.xTouch, 0, m_heightScreen, screenPos.y);
-  }
-  break;
-  case 2:
-  {
-    xTouch = constrain(xTouch, cornerMin.xTouch, cornerMax.xTouch);
-    yTouch = constrain(yTouch, cornerMin.yTouch, cornerMax.yTouch);
+      yMapFrom = TOUCH_INVERT_Y ? cornerMin.xTouch : cornerMax.xTouch;
+      yMapTo   = TOUCH_INVERT_Y ? cornerMax.xTouch : cornerMin.xTouch;
+      break;
 
-    screenPos.x = map(xTouch, cornerMax.xTouch, cornerMin.xTouch, 0, m_widthScreen);
-    screenPos.y = map(yTouch, cornerMin.yTouch, cornerMax.yTouch, 0, m_heightScreen);
+    case 2:
+      xMapVal = xTouch;
+      yMapVal = yTouch;
 
-    // Serial.printf("Map 2 xTouch: %i from %i and %i to %i and %i result: %i\n", xTouch, cornerMax.xTouch, cornerMin.xTouch, 0, m_widthScreen, screenPos.x);
-    // Serial.printf("Map 2 yTouch: %i from %i and %i to %i and %i result: %i\n", yTouch, cornerMin.yTouch, cornerMax.yTouch, 0, m_heightScreen, screenPos.y);
-  }
-  break;
-  case 3:
-  {
-    xTouch = constrain(xTouch, cornerMin.xTouch, cornerMax.xTouch);
-    yTouch = constrain(yTouch, cornerMin.yTouch, cornerMax.yTouch);
+      xMapFrom = TOUCH_INVERT_X ? cornerMin.xTouch : cornerMax.xTouch;
+      xMapTo   = TOUCH_INVERT_X ? cornerMax.xTouch : cornerMin.xTouch;
 
-    screenPos.x = map(yTouch, cornerMin.yTouch, cornerMax.yTouch, 0, m_widthScreen);
-    screenPos.y = map(xTouch, cornerMin.xTouch, cornerMax.xTouch, 0, m_heightScreen);
+      yMapFrom = TOUCH_INVERT_Y ? cornerMax.yTouch : cornerMin.yTouch;
+      yMapTo   = TOUCH_INVERT_Y ? cornerMin.yTouch : cornerMax.yTouch;
+      break;
 
-    // Serial.printf("Map 3 xTouch: %i from %i and %i to %i and %i result: %i\n", yTouch, cornerMin.yTouch, cornerMax.yTouch, 0, m_widthScreen, screenPos.x);
-    // Serial.printf("Map 3 yTouch: %i from %i and %i to %i and %i result: %i\n", yTouch, cornerMin.xTouch, cornerMax.xTouch, 0, m_heightScreen, screenPos.y);
-  }
-  break;
+    case 3:
+      xMapVal = yTouch;
+      yMapVal = xTouch;
 
-  default:
-    screenPos.x = 0;
-    screenPos.y = 0;
-    break;
+      xMapFrom = TOUCH_INVERT_X ? cornerMax.yTouch : cornerMin.yTouch;
+      xMapTo   = TOUCH_INVERT_X ? cornerMin.yTouch : cornerMax.yTouch;
+
+      yMapFrom = TOUCH_INVERT_Y ? cornerMax.xTouch : cornerMin.xTouch;
+      yMapTo   = TOUCH_INVERT_Y ? cornerMin.xTouch : cornerMax.xTouch;
+      break;
+
+    default:
+      return screenPos;
   }
 
+  screenPos.x = map(xMapVal, xMapFrom, xMapTo, 0, m_widthScreen);
+  screenPos.y = map(yMapVal, yMapFrom, yMapTo, 0, m_heightScreen);
+
+  Serial.printf("Mapped x: %i from [%i → %i] to [0 → %i] = %i\n", xMapVal, xMapFrom, xMapTo, m_widthScreen, screenPos.x);
+  Serial.printf("Mapped y: %i from [%i → %i] to [0 → %i] = %i\n", yMapVal, yMapFrom, yMapTo, m_heightScreen, screenPos.y);
 
   return screenPos;
 }
@@ -966,12 +997,12 @@ void TouchScreen::calibrateTouch(uint16_t *parameters, uint32_t color_fg, uint32
     for (uint8_t j = 0; j < 8; j++)
     {
       // Use a lower detect threshold as corners tend to be less sensitive
-      while (!m_ts.getInputBodmer())
+      while (!m_ts->getInputBodmer())
         ;
-      Serial.printf("%i, %i\n", m_ts.x, m_ts.y);
-      values[i * 2] += m_ts.x;
-      values[i * 2 + 1] += m_ts.y;
-      Serial.printf("{%i\t%i\t%i}\n", m_ts.x, m_ts.y, m_ts.z);
+      Serial.printf("%i, %i\n", m_ts->x, m_ts->y);
+      values[i * 2] += m_ts->x;
+      values[i * 2 + 1] += m_ts->y;
+      Serial.printf("{%i\t%i\t%i}\n", m_ts->x, m_ts->y, m_ts->z);
     }
     values[i * 2] /= 8;
     values[i * 2 + 1] /= 8;

@@ -55,12 +55,13 @@ var searchData=
   ['spinbox_5fdebug_52',['SPINBOX_DEBUG',['../wspinbox_8cpp.html#adf1405a72c5ebbf4c97eb5bea813aa0e',1,'wspinbox.cpp']]],
   ['spinboxconfig_53',['SpinBoxConfig',['../struct_spin_box_config.html',1,'']]],
   ['startangle_54',['startAngle',['../struct_circular_bar_config.html#ac128ec458d93ab0a659e2bba485ad394',1,'CircularBarConfig']]],
-  ['startsd_55',['startSD',['../class_display_f_k.html#a001010467f654279fa4e2769ddf278ed',1,'DisplayFK::startSD(uint8_t pinCS, SPIClass *spiShared, int hz)'],['../class_display_f_k.html#ae8dce90fc070a6aa0b2c1d4f98e3dd08',1,'DisplayFK::startSD(uint8_t pinCS, SPIClass *spiShared)']]],
-  ['starttransaction_56',['startTransaction',['../class_display_f_k.html#a54c0b9fc2c47d901318956deb1fdb89b',1,'DisplayFK']]],
-  ['startvalue_57',['startValue',['../struct_input_external_config.html#a5e7f66a0c83e00b191de7ab6c47e015c',1,'InputExternalConfig::startValue()'],['../struct_number_box_config.html#a0b48f96ca545eb87adccaad755078eee',1,'NumberBoxConfig::startValue()'],['../struct_spin_box_config.html#ad38a6ed2b9caf6a7f9a122d41596de40',1,'SpinBoxConfig::startValue()'],['../struct_text_box_config.html#a026c472622542692c3a8d26a7f780861',1,'TextBoxConfig::startValue()']]],
-  ['step_58',['step',['../struct_spin_box_config.html#a5283dcd54219d5cf6f7c33cc6df1612f',1,'SpinBoxConfig']]],
-  ['steps_59',['steps',['../struct_vertical_analog_config.html#ae47987859f901edd22bcf056fa55f950',1,'VerticalAnalogConfig']]],
-  ['substring_60',['substring',['../class_char_string.html#a93e8f9e3026d65e61d5649c0b5af5446',1,'CharString']]],
-  ['substring_5fcstr_61',['substring_cstr',['../class_char_string.html#aaed49b0d117cbfa5006738a38c62272e',1,'CharString']]],
-  ['suffix_62',['suffix',['../struct_label_config.html#a3ac3cca3582d563677fb72f7716cfa1a',1,'LabelConfig']]]
+  ['startasft6236u_55',['startAsFT6236U',['../class_touch_screen.html#adba78f48984a3a52c8d5fb882fc1a6ab',1,'TouchScreen']]],
+  ['startsd_56',['startSD',['../class_display_f_k.html#ae8dce90fc070a6aa0b2c1d4f98e3dd08',1,'DisplayFK::startSD(uint8_t pinCS, SPIClass *spiShared)'],['../class_display_f_k.html#a001010467f654279fa4e2769ddf278ed',1,'DisplayFK::startSD(uint8_t pinCS, SPIClass *spiShared, int hz)']]],
+  ['starttransaction_57',['startTransaction',['../class_display_f_k.html#a54c0b9fc2c47d901318956deb1fdb89b',1,'DisplayFK']]],
+  ['startvalue_58',['startValue',['../struct_input_external_config.html#a5e7f66a0c83e00b191de7ab6c47e015c',1,'InputExternalConfig::startValue()'],['../struct_number_box_config.html#a0b48f96ca545eb87adccaad755078eee',1,'NumberBoxConfig::startValue()'],['../struct_spin_box_config.html#ad38a6ed2b9caf6a7f9a122d41596de40',1,'SpinBoxConfig::startValue()'],['../struct_text_box_config.html#a026c472622542692c3a8d26a7f780861',1,'TextBoxConfig::startValue()']]],
+  ['step_59',['step',['../struct_spin_box_config.html#a5283dcd54219d5cf6f7c33cc6df1612f',1,'SpinBoxConfig']]],
+  ['steps_60',['steps',['../struct_vertical_analog_config.html#ae47987859f901edd22bcf056fa55f950',1,'VerticalAnalogConfig']]],
+  ['substring_61',['substring',['../class_char_string.html#a93e8f9e3026d65e61d5649c0b5af5446',1,'CharString']]],
+  ['substring_5fcstr_62',['substring_cstr',['../class_char_string.html#aaed49b0d117cbfa5006738a38c62272e',1,'CharString']]],
+  ['suffix_63',['suffix',['../struct_label_config.html#a3ac3cca3582d563677fb72f7716cfa1a',1,'LabelConfig']]]
 ];

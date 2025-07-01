@@ -163,6 +163,8 @@ class TAMC_GT911 {
     bool isTouched = false;
     // uint8_t gesture = NO_GESTURE;
     TP_Point points[5];
+    uint16_t m_savedX = 0;
+    uint16_t m_savedY = 0;
 
   private:
     void calculateChecksum();

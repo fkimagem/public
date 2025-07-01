@@ -4,6 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${default}",
+                "C:/_IDEPortable/arduino_edgewx/portable/packages/**",
+                "C:/_IDEPortable/arduino_edgewx/portable/sketchbook/libraries/**",
+                "C:/_IDEPortable/arduino_edgewx/portable/packages/esp32/hardware/esp32/2.0.17/**",
                 "C:/_IDEPortable/arduino_edgewx/portable/sketchbook/libraries/DisplayFK/**",
                 "C:/_IDEPortable/arduino_edgewx/portable/packages/esp32/hardware/esp32/2.0.17/cores/esp32",
                 "C:/_IDEPortable/arduino_edgewx/portable/packages/esp32/hardware/esp32/2.0.17/cores/esp32/**",

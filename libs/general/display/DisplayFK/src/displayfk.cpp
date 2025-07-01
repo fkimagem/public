@@ -1298,17 +1298,67 @@ void DisplayFK::setFontBold(const GFXfont *_font)
  */
 void DisplayFK::startTouch(uint16_t w, uint16_t h, uint8_t _rotation, SPIClass *_sharedSPI = nullptr)
 {
-#if defined(TOUCH_XPT2046)
-    touchExterno = new TouchScreen(WidgetBase::objTFT, _sharedSPI);
-#else
     touchExterno = new TouchScreen();
-#endif
 
     if (touchExterno)
     {
         touchExterno->setDimension(w, h, _rotation);
     }
 }
+
+#if defined(TOUCH_XPT2046)
+void DisplayFK::startTouchXPT2046(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSclk, int8_t pinMosi, int8_t pinMiso, int8_t pinCS, SPIClass *_sharedSPI, Arduino_GFX *_objTFT){
+    if(!touchExterno){
+        touchExterno = new TouchScreen();
+        if (touchExterno)
+        {
+            touchExterno->startAsXPT2046(w, h, _rotation, pinSclk, pinMosi, pinMiso, pinCS, _sharedSPI, _objTFT);
+        }
+    }
+}
+#elif defined (TOUCH_FT6236U)
+void DisplayFK::startTouchFT6236U(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, uint8_t pinINT, int8_t pinRST){
+    if(!touchExterno){
+        touchExterno = new TouchScreen();
+        if (touchExterno)
+        {
+            touchExterno->startAsFT6236U(w, h, _rotation, pinSDA, pinSCL, pinINT, pinRST);
+        }
+    }
+}
+#elif defined (TOUCH_FT6336U)
+void DisplayFK::startTouchFT6336U(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, int8_t pinINT, int8_t pinRST){
+    if(!touchExterno){
+        touchExterno = new TouchScreen();
+        if (touchExterno)
+        {
+            touchExterno->startAsFT6336(w, h, _rotation, pinSDA, pinSCL, pinINT, pinRST);
+        }
+    }
+}
+#elif defined (TOUCH_CST816)
+void DisplayFK::startTouchCST816(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, int8_t pinINT, int8_t pinRST){
+    if(!touchExterno){
+        touchExterno = new TouchScreen();
+        if (touchExterno)
+        {
+            touchExterno->startAsCST816(w, h, _rotation, pinSDA, pinSCL, pinINT, pinRST);
+        }
+    }
+}
+#elif defined (TOUCH_GT911)
+void DisplayFK::startTouchGT911(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, int8_t pinINT, int8_t pinRST){
+    
+    if(!touchExterno){
+        touchExterno = new TouchScreen();
+        if (touchExterno)
+        {
+            touchExterno->startAsGT911(w, h, _rotation, pinSDA, pinSCL, pinINT, pinRST);
+        }
+    }
+}
+#endif
+
 #endif
 
 /**

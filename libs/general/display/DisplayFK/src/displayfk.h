@@ -315,6 +315,18 @@ public:
 #endif
 
     void startTouch(uint16_t w, uint16_t h, uint8_t _rotation, SPIClass *_sharedSPI);
+
+    #if defined(TOUCH_XPT2046)
+    void startTouchXPT2046(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSclk, int8_t pinMosi, int8_t pinMiso, int8_t pinCS, SPIClass *_sharedSPI, Arduino_GFX *_objTFT);
+    #elif defined(TOUCH_FT6236U)
+    void startTouchFT6236U(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, uint8_t pinINT, int8_t pinRST);
+    #elif defined(TOUCH_FT6336)
+    void startTouchFT6336(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, int8_t pinINT, int8_t pinRST);
+    #elif defined(TOUCH_CST816)
+    void startTouchCST816(uint16_t w, uint16_t h, uint8_t _rotation, uintint8_t8_t pinSDA, int8_t pinSCL, int8_t pinINT, int8_t pinRST);
+    #elif defined(TOUCH_GT911)
+    void startTouchGT911(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSDA, int8_t pinSCL, int8_t pinINT, int8_t pinRST);
+    #endif
     TouchScreen *touchExterno = nullptr; ///< External touch screen object.
 #endif
 
