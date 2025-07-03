@@ -1,133 +1,90 @@
 {
   "devboards": [
     {
-      "id": 4,
-      "shortName": "Round display GC9A01",
-      "fullName": "Round display GC9A01",
-      "tags": [
-        "tft",
-        "circle",
-        "circular",
-        "240",
-        "gc9a01",
-        "watch",
-        "clock"
-      ],
-      "idDisplay": 5,
-      "idTouch": 0,
-      "urlImage": "images/displays/circularDisplay.jpg",
-      "defaultSize": {
-        "width": 240,
-        "height": 240
-      }
-    },
-    {
-      "id": 5,
-      "shortName": "Embed ES32S3",
-      "fullName": "Embed ES32S3 480x270 capacitive GT911",
-      "tags": [
-        "ips",
-        "esp32",
-        "s3",
-        "480",
-        "270",
-        "capacitive",
-        "gt911",
-        "yellow",
-        "touch"
-      ],
-      "idDisplay": 4,
-      "idTouch": 1,
-      "urlImage": "images/displays/esp324827s043_gt911.jpg",
-      "defaultSize": {
-        "width": 480,
-        "height": 272
-      }
-    },
-    {
-      "id": 6,
-      "shortName": "ESP32S3 Touch XPT2046",
-      "fullName": "Embed ESP32S3 800x480 resistive XPT2046",
-      "tags": [
-        "tft",
-        "s3",
-        "800",
-        "480",
-        "resistive",
-        "xpt2046",
-        "touch"
-      ],
-      "idDisplay": 2,
-      "idTouch": 2,
-      "urlImage": "images/displays/esp328048s043_xpt2046.jpg",
-      "defaultSize": {
-        "width": 800,
-        "height": 480
-      }
-    },
-    {
-      "id": 7,
-      "shortName": "Red ILI9488 FT6236",
-      "fullName": "Red board ILI9488 capacitive FT6236",
-      "tags": [
-        "tft",
-        "ili9488",
-        "capacitive",
-        "ft6236u",
-        "touch",
-        "480",
-        "320"
-      ],
-      "idDisplay": 1,
-      "idTouch": 3,
-      "urlImage": "images/displays/ili9488_ft6236.jpg",
-      "defaultSize": {
-        "width": 480,
-        "height": 320
-      }
-    },
-    {
-      "id": 8,
-      "shortName": "Red ILI9488 XPT2046",
-      "fullName": "Red board ILI9488 resistive XPT2046",
-      "tags": [
-        "tft",
-        "ili9488",
-        "resistive",
-        "xpt2046",
-        "touch",
-        "480",
-        "320"
-      ],
-      "idDisplay": 1,
-      "idTouch": 2,
-      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fili9488_xpt2046_4pol.png?alt=media&token=1e4905fd-1636-439a-a4b4-12fdcee93a3e",
-      "defaultSize": {
-        "width": 480,
-        "height": 320
-      }
-    },
-    {
-      "id": 9,
-      "shortName": "Yellow ILI9488 FT6336U",
-      "fullName": "Yellow board ILI9488 capacitive FT6336U",
-      "tags": [
-        "tft",
-        "ili9488",
-        "resistive",
-        "ft6336u",
-        "touch",
-        "480",
-        "320"
-      ],
+      "id": 1,
+      "shortName": "ESP32S3  7in XPT2046",
+      "fullName": "Embed ESP32S3  7in Touch XPT2046",
+      "tags": [],
       "idDisplay": 1,
       "idTouch": 5,
-      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fili9488_xpt2046_4pol.png?alt=media&token=1e4905fd-1636-439a-a4b4-12fdcee93a3e",
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_7_XPT2046_AMARELO.png?alt=media&token=3d29e9b0-3e4f-47ac-b84a-a55fbdf37167",
       "defaultSize": {
-        "width": 480,
-        "height": 320
+        "width": 800, "height": 480
+      }
+    },
+	{
+      "id": 2,
+      "shortName": "GC9A01 1.8in Rounded",
+      "fullName": "GC9A01 1.8in Rounded",
+      "tags": [],
+      "idDisplay": 6,
+      "idTouch": 0,
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-28_GC9A01.png?alt=media&token=489eddba-627e-42fb-b8c4-174a1a9795bf",
+      "defaultSize": {
+        "width": 240, "height": 240
+      }
+    },
+	{
+      "id": 3,
+      "shortName": "ILI9488 XPT2046 2.8in",
+      "fullName": "ILI9488 XPT2046 2.8in",
+      "tags": [],
+      "idDisplay": 1,
+      "idTouch": 2,
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2-8_ILI9488_XPT2046.png?alt=media&token=b2e4c426-c461-44f3-a3bb-d5f2e8602f78",
+      "defaultSize": {
+        "width": 320, "height": 240
+      }
+    },
+	{
+      "id": 4,
+      "shortName": "ILI9488 FT6236U 3.5in",
+      "fullName": "ILI9488 FT6236U 3.5in",
+      "tags": [],
+      "idDisplay": 1,
+      "idTouch": 3,
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ILI9488_FT6236V.png?alt=media&token=f3cd5f96-be3a-4070-9b86-f58693975365",
+      "defaultSize": {
+        "width": 480, "height": 320
+      }
+    },
+	{
+      "id": 5,
+      "shortName": "ILI9488 XPT2046 3.5in",
+      "fullName": "ILI9488 XPT2046 3.5in",
+      "tags": [],
+      "idDisplay": 1,
+      "idTouch": 2,
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ILI9488_XPT2046.png?alt=media&token=aeb150fe-9353-49fa-9253-084cf815ba6b",
+      "defaultSize": {
+        "width": 480, "height": 320
+      }
+    },
+	{
+      "id": 6,
+      "shortName": "ILI9488 FT6336 4.0in",
+      "fullName": "ILI9488 FT6336 4.0in",
+      "tags": [],
+      "idDisplay": 1,
+      "idTouch": 6,
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_FT6336U_AMARELO.png?alt=media&token=267a972f-99a3-4b4f-8785-98e1ff5d4e44",
+      "defaultSize": {
+        "width": 480, "height": 320
+      }
+    },
+	{
+      "id": 7,
+      "shortName": "ILI9488 XPT2046 4.0in",
+      "fullName": "ILI9488 XPT2046 4.0in",
+      "tags": [],
+      "idDisplay": 1,
+      "idTouch": 2,
+      "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_XPT2046.png?alt=media&token=5ea1ff15-ae9d-4f21-b4be-77572b4b11b5",
+      "defaultSize": {
+        "width": 480, "height": 320
       }
     }
+    
   ],
   "touch": [
     {
@@ -169,6 +126,14 @@
       "defineName": "TOUCH_FT6336U",
       "needCalibration": false,
       "connectionType": 1
+    },
+	{
+      "id": 6,
+      "type": 3,
+      "name": "FT6336U",
+      "defineName": "TOUCH_FT6336U",
+      "needCalibration": false,
+      "connectionType": 1
     }
   ],
   "display": [
@@ -196,8 +161,16 @@
       "separator": "->",
       "connectionType": 4
     },
-    {
+	{
       "id": 5,
+      "type": 3,
+      "name": "ESP32-8048S070",
+      "libModel": 0,
+      "separator": "->",
+      "connectionType": 4
+    },
+    {
+      "id": 6,
       "type": 5,
       "name": "GC9A01",
       "libModel": 0,
@@ -205,7 +178,7 @@
       "connectionType": 0
     },
     {
-      "id": 6,
+      "id": 7,
       "type": 8,
       "name": "ST7735",
       "libModel": 0,
