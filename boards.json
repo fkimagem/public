@@ -20,8 +20,8 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 272,
+                "width": 480
             },
             "fullName": "ESP32S3 4.3in XPT2046",
             "id": 2,
@@ -51,8 +51,8 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 240,
+                "width": 240
             },
             "fullName": "TFT GC9A01",
             "id": 4,
@@ -66,8 +66,8 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 128,
+                "width": 128
             },
             "fullName": "TFT 1.44in ST7735",
             "id": 5,
@@ -81,8 +81,8 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 240,
+                "width": 240
             },
             "fullName": "ST7789",
             "id": 6,
@@ -96,8 +96,8 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 160,
+                "width": 128
             },
             "fullName": "ST7735 1.8in",
             "id": 7,
@@ -111,8 +111,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 176,
+                "width": 220
             },
             "fullName": "ILI9225 TFT 2.2in",
             "id": 8,
@@ -128,8 +128,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 240,
+                "width": 320
             },
             "fullName": "TFT ILI9488 2.8in",
             "id": 9,
@@ -143,8 +143,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 320,
+                "width": 240
             },
             "fullName": "ST7789 2in BLUE BOARD",
             "id": 10,
@@ -158,8 +158,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488 3.5in",
             "id": 11,
@@ -173,8 +173,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488 3.5in",
             "id": 12,
@@ -188,8 +188,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 480,
+                "width": 320
             },
             "fullName": "ILI9488 4in",
             "id": 13,
@@ -203,8 +203,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488in 4in",
             "id": 14,
@@ -218,8 +218,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 128,
+                "width": 64
             },
             "fullName": "GM009605 0.96in",
             "id": 15,
@@ -233,8 +233,8 @@
         },
         {
             "defaultSize": {
-                "height": 0,
-                "width": 0
+                "height": 84,
+                "width": 48
             },
             "fullName": "NOKIA PDC8544 0.84in",
             "id": 16,
