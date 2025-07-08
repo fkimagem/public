@@ -28,8 +28,19 @@ void toggle0tgb_cb();
 
 // Create global objects. Constructor is: xPos, yPos and indexScreen
 #define TFT_BL 2 // LED K
+Arduino_ESP32RGBPanel *rgbpanel = nullptr;
+Arduino_RGB_Display *tft = nullptr;
+uint8_t rotationScreen = 1;
+DisplayFK myDisplay;
+const uint8_t qtdToggleBtn = 1;
+ToggleButton arrayTogglebtn[qtdToggleBtn] = {ToggleButton(35, 165, 0)};
+//SPIClass spi_shared(FSPI);
+// Texto de exemplo.
 
-Arduino_ESP32RGBPanel *rgbpanel = new Arduino_ESP32RGBPanel(
+void setup(){
+    Serial.begin(115200);
+
+    rgbpanel = new Arduino_ESP32RGBPanel(
     // Sinais de controle
     40,  // DE
     41,  // VSYNC
@@ -68,25 +79,15 @@ Arduino_ESP32RGBPanel *rgbpanel = new Arduino_ESP32RGBPanel(
     0   // bounce_buffer_size_px
 );
 
-// =======================
-// Criação do objeto de display
-// =======================
-Arduino_RGB_Display *tft = new Arduino_RGB_Display(
+
+    tft = new Arduino_RGB_Display(
     480,  // Largura
     272,  // Altura
     rgbpanel,
     0,    // Rotação
     true  // auto_flush
-);
-uint8_t rotationScreen = 1;
-DisplayFK myDisplay;
-const uint8_t qtdToggleBtn = 1;
-ToggleButton arrayTogglebtn[qtdToggleBtn] = {ToggleButton(35, 165, 0)};
-//SPIClass spi_shared(FSPI);
-// Texto de exemplo.
+    );
 
-void setup(){
-    Serial.begin(115200);
     tft->begin(); // Initialize comunication with display
     #if defined(TFT_BL)
     pinMode(TFT_BL, OUTPUT);

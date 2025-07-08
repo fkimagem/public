@@ -1307,12 +1307,21 @@ void DisplayFK::startTouch(uint16_t w, uint16_t h, uint8_t _rotation, SPIClass *
 }
 
 #if defined(TOUCH_XPT2046)
-void DisplayFK::startTouchXPT2046(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSclk, int8_t pinMosi, int8_t pinMiso, int8_t pinCS, SPIClass *_sharedSPI, Arduino_GFX *_objTFT){
+void DisplayFK::startTouchXPT2046(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinCS, SPIClass *_sharedSPI, Arduino_GFX *_objTFT){
     if(!touchExterno){
         touchExterno = new TouchScreen();
         if (touchExterno)
         {
-            touchExterno->startAsXPT2046(w, h, _rotation, pinSclk, pinMosi, pinMiso, pinCS, _sharedSPI, _objTFT);
+            touchExterno->startAsXPT2046(w, h, _rotation, -1, -1, -1, pinCS, _sharedSPI, _objTFT);
+        }
+    }
+}
+void DisplayFK::startTouchXPT2046(uint16_t w, uint16_t h, uint8_t _rotation, int8_t pinSclk, int8_t pinMosi, int8_t pinMiso, int8_t pinCS, Arduino_GFX *_objTFT){
+    if(!touchExterno){
+        touchExterno = new TouchScreen();
+        if (touchExterno)
+        {
+            touchExterno->startAsXPT2046(w, h, _rotation, pinSclk, pinMosi, pinMiso, pinCS, nullptr, _objTFT);
         }
     }
 }

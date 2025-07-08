@@ -2,6 +2,7 @@
 #define DISP_DEFAULT
 #define HAS_TOUCH true
 #define TOUCH_XPT2046
+
 #define DISP_CS	5 //CS, SS, nSS
 #define DISP_MISO	19 //MISO, SDO, SOMI
 #define DISP_MOSI	23 //MOSI, SDI, SIMO

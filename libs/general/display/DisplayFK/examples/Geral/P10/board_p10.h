@@ -1,13 +1,15 @@
 
 #define DISP_DEFAULT
-#define HAS_TOUCH true
-#define TOUCH_FT6336U
+
 #define DISP_CS     10 //CS, SS, nSS
 #define DISP_MISO	-1 //MISO, SDO, SOMI
 #define DISP_MOSI	11 //MOSI, SDI, SIMO
 #define DISP_SCLK	12 //SCLK, SCK, CLK
 #define DISP_RST	9 //RST, RES, RESET
 #define DISP_DC     8 //DC, RS, A0
+
+#define HAS_TOUCH true
+#define TOUCH_FT6336U
 #define TOUCH_FT6336_SCL    14 //21
 #define TOUCH_FT6336_SDA    13 //19
 #define TOUCH_FT6336_INT    18 //20

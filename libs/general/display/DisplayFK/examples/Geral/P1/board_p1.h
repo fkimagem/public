@@ -12,5 +12,7 @@
 #define TOUCH_XPT2046
 #define TC_CS	21 //CS, SS, nSS
 #define TOUCH_FREQUENCY	2500000
+#define TOUCH_INVERT_X false
+#define TOUCH_INVERT_Y false
 
 #pragma message("Compiling for board P1")

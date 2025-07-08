@@ -26,7 +26,17 @@ void toggle0tgb_cb();
 
 // Create global objects. Constructor is: xPos, yPos and indexScreen
 #define DISP_BL 2
-Arduino_ESP32RGBPanel *bus = new Arduino_ESP32RGBPanel(
+Arduino_ESP32RGBPanel *bus = nullptr;
+Arduino_RGB_Display *tft = nullptr;
+uint8_t rotationScreen = 3;
+    DisplayFK myDisplay;
+const uint8_t qtdToggleBtn = 1;
+ToggleButton arrayTogglebtn[qtdToggleBtn] = {ToggleButton(35, 165, 0)};
+// Texto de exemplo.
+
+void setup(){
+    Serial.begin(115200);
+    bus = new Arduino_ESP32RGBPanel(
   /* de          */ 40,
   /* vsync       */ 41,
   /* hsync       */ 39,
@@ -46,16 +56,11 @@ Arduino_ESP32RGBPanel *bus = new Arduino_ESP32RGBPanel(
   /* pclk_idle_high   */ 0,
   /* bounce_buffer_px */ 0
 );
-Arduino_RGB_Display *tft = new Arduino_RGB_Display(
-    800 /* width */, 480 /* height */, bus, 0 /* rotation */, true /* auto_flush */);
-uint8_t rotationScreen = 3;
-    DisplayFK myDisplay;
-const uint8_t qtdToggleBtn = 1;
-ToggleButton arrayTogglebtn[qtdToggleBtn] = {ToggleButton(35, 165, 0)};
-// Texto de exemplo.
 
-void setup(){
-    Serial.begin(115200);
+tft = new Arduino_RGB_Display(800 /* width */, 480 /* height */, bus, 0 /* rotation */, true /* auto_flush */);
+
+
+
     tft->begin(); // Initialize comunication with display
     #if defined(DISP_BL)
     pinMode(DISP_BL, OUTPUT);

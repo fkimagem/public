@@ -815,7 +815,7 @@ CalibrationPoint_t TouchScreen::getMinPoint(CalibrationPoint_t pontos[4]) {
   CalibrationPoint_t minPoint = pontos[0];
 
   for (int i = 1; i < 4; ++i) {
-    if (pontos[i].xTouch < minPoint.xTouch && pontos[i].yTouch < minPoint.yTouch) {
+    if (pontos[i].xTouch <= minPoint.xTouch && pontos[i].yTouch <= minPoint.yTouch) {
       minPoint = pontos[i];
     }
   }
@@ -828,7 +828,7 @@ CalibrationPoint_t TouchScreen::getMaxPoint(CalibrationPoint_t pontos[4]) {
   CalibrationPoint_t maxPoint = pontos[0];
 
   for (int i = 1; i < 4; ++i) {
-    if (pontos[i].xTouch > maxPoint.xTouch && pontos[i].yTouch > maxPoint.yTouch) {
+    if (pontos[i].xTouch >= maxPoint.xTouch && pontos[i].yTouch >= maxPoint.yTouch) {
       maxPoint = pontos[i];
     }
   }
@@ -863,6 +863,8 @@ ScreenPoint_t TouchScreen::getScreenPosition(int16_t xTouch, int16_t yTouch)
 
   CalibrationPoint_t cornerMin = getMinPoint(m_calibMatrix);
   CalibrationPoint_t cornerMax = getMaxPoint(m_calibMatrix);
+
+  Serial.printf("Ponto minimo: %i x %i e ponto maximo: %i x %i\n", cornerMin.xTouch, cornerMin.yTouch, cornerMax.xTouch, cornerMax.yTouch);
 
   xTouch = constrain(xTouch, cornerMin.xTouch, cornerMax.xTouch);
   yTouch = constrain(yTouch, cornerMin.yTouch, cornerMax.yTouch);

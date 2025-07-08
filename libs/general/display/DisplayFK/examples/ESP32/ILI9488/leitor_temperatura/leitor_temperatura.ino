@@ -99,21 +99,8 @@ void cb_LerSensor(TimerHandle_t xTimer){ // Função de callback para a leitura 
 
 void setup(){ // Função de setup
     Serial.begin(115200); // Inicializa a comunicação serial
-
-    spi_shared.begin(DISP_SCLK, DISP_MISO, DISP_MOSI); // Inicializa a comunicação SPI
-    bus = new Arduino_HWSPI(DISP_DC, DISP_CS, DISP_SCLK, DISP_MOSI, DISP_MISO, &spi_shared); // Inicializa o objeto para a comunicação com o display
-    tft = new Arduino_ILI9488_18bit(bus, DISP_RST, rotationScreen, false); // Inicializa o objeto para a comunicação com o display
-    tft->begin(DISP_FREQUENCY); // Inicializa a comunicação com o display
     
-    WidgetBase::objTFT = tft; // Referência para o objeto para desenhar na tela
-    myDisplay.startTouch(DISPLAY_W, DISPLAY_H, rotationScreen, &spi_shared); // Inicializa a comunicação com o touch controller
-    myDisplay.checkCalibration(); // Verifica e aplica os valores de calibração
-    myDisplay.disableTouchLog();
-    loadWidgets(); // Carrega os widgets
-
-    sensors_1.begin(); // Inicializa o sensor de temperatura
-    sensors_2.begin(); // Inicializa o sensor de temperatura
-
+    const bool initialStatusPinsRele = HIGH; // Status inicial dos pinos de rele
     pinMode(pinLed_1, OUTPUT); // Configura o pino como saída
     digitalWrite(pinLed_1, LOW);  // Inicializa o pino como LOW
     pinMode(pinLed_2, OUTPUT); // Configura o pino como saída
@@ -121,9 +108,29 @@ void setup(){ // Função de setup
     pinMode(pinLed_3, OUTPUT); // Configura o pino como saída
     digitalWrite(pinLed_3, LOW);  // Inicializa o pino como LOW
     pinMode(pinMotor, OUTPUT); // Configura o pino como saída
-    digitalWrite(pinMotor, LOW);  // Inicializa o pino como LOW
+    digitalWrite(pinMotor, initialStatusPinsRele);  // Inicializa o pino como initialStatusPinsRele
     pinMode(pinBomba, OUTPUT); // Configura o pino como saída
-    digitalWrite(pinBomba, LOW);  // Inicializa o pino como LOW
+    digitalWrite(pinBomba, initialStatusPinsRele);  // Inicializa o pino como initialStatusPinsRele
+
+    spi_shared.begin(DISP_SCLK, DISP_MISO, DISP_MOSI); // Inicializa a comunicação SPI
+    bus = new Arduino_HWSPI(DISP_DC, DISP_CS, DISP_SCLK, DISP_MOSI, DISP_MISO, &spi_shared); // Inicializa o objeto para a comunicação com o display
+    tft = new Arduino_ILI9488_18bit(bus, DISP_RST, rotationScreen, false); // Inicializa o objeto para a comunicação com o display
+    tft->begin(DISP_FREQUENCY); // Inicializa a comunicação com o display
+    
+    WidgetBase::objTFT = tft; // Referência para o objeto para desenhar na tela
+    //myDisplay.startTouch(DISPLAY_W, DISPLAY_H, rotationScreen, &spi_shared); // Inicializa a comunicação com o touch controller
+    myDisplay.startTouchXPT2046(DISPLAY_W, DISPLAY_H, rotationScreen, -1, -1, -1, TC_CS, &spi_shared, tft); //Start comunication with touch controller
+    //myDisplay.recalibrate(); // Verifica e aplica os valores de calibração
+    myDisplay.checkCalibration(); // Verifica e aplica os valores de calibração
+    myDisplay.disableTouchLog();
+    loadWidgets(); // Carrega os widgets
+
+    sensors_1.begin(); // Inicializa o sensor de temperatura
+    sensors_2.begin(); // Inicializa o sensor de temperatura
+
+    
+
+    
 
     WidgetBase::loadScreen = screen0; // Defino qual tela deve ser carregada/desenhada
     myDisplay.createTask(); // Inicializa a task para ler o touch e desenhar
@@ -220,32 +227,42 @@ void tg32tgb_cb(){
 
 // Função de callback do widget toggleButton
 void releMotortgb_cb(){
-    bool myValue = arrayTogglebtn[3].getStatus(); // Obtém o status do toggleButton
-    digitalWrite(pinMotor, myValue); // Ativa/Desativa o relé 1
+    bool myStatus = arrayTogglebtn[3].getStatus(); // Obtém o status do toggleButton (ligado/desligado)
+    
+    bool statusRele = !myStatus;//O rele ativa com LOW, entao aqui inverto a logica para facilitar o entendimento das linhas abaixo.
+    //statusRele = true -> rele ativado (passando energia)
+    //statusRele = false -> rele desativado
+    
+    digitalWrite(pinMotor, statusRele); // Ativa/Desativa o relé 1
 
-    // Se ligou rele do motor
-    if(myValue){
+    // Se ligou togglebutton do rele do motor
+    if(myStatus){
         // Força a bomba para ligar
-        arrayTogglebtn[4].setStatus(true);
-        digitalWrite(pinBomba, myValue);
+        arrayTogglebtn[4].setStatus(true);//Ativa o togglebutton da bomba
+        digitalWrite(pinBomba, statusRele);//Coloca o pin da bomba no mesmo nivel do pin do rele (digitalWrite acima desse 'if')
     }
 
-    Serial.print("New value for toggle is: ");Serial.println(myValue); // Imprime o valor do toggleButton no monitor serial
+    Serial.print("O motor esta em nivel: ");Serial.println(statusRele); // Imprime o valor do toggleButton no monitor serial
 }
 
 // Função de callback do widget toggleButton
 void releBombatgb_cb(){
-    bool myValue = arrayTogglebtn[4].getStatus(); // Obtém o status do toggleButton
-    digitalWrite(pinBomba, myValue); // Ativa/Desativa o relé 2
+    bool myStatus = arrayTogglebtn[4].getStatus(); // Obtém o status do toggleButton (ligado/desligado)
+    //statusRele = true -> rele ativado (passando energia)
+    //statusRele = false -> rele desativado
+    
+    bool statusRele = !myStatus;//O rele ativa com LOW, entao aqui inverto a logica para facilitar o entendimento das linhas abaixo.
+    
+    digitalWrite(pinBomba, statusRele); // Ativa/Desativa o relé 2
 
-    // Se desligou o rele da bomba
-    if(!myValue){
+    // Se desligou o togglebutton do rele da bomba
+    if(!myStatus){
         // Força o motor para desligar
-        arrayTogglebtn[3].setStatus(false);
-        digitalWrite(pinMotor, myValue);
+        arrayTogglebtn[3].setStatus(false);//Desativa o togglebutton de controle do motor
+        digitalWrite(pinMotor, statusRele);////Coloca o pin do motor no mesmo nivel do pin do rele (digitalWrite acima desse 'if')
     }
 
-    Serial.print("New value for toggle is: ");Serial.println(myValue); // Imprime o valor do toggleButton no monitor serial
+    Serial.print("A bomba esta em nivel: ");Serial.println(statusRele); // Imprime o valor do toggleButton no monitor serial
 }
 
 // Função de callback do widget imagem
