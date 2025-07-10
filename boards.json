@@ -270,7 +270,7 @@
             "libModel": 0,
             "name": "ESP32-4827S043",
             "separator": "->",
-            "type": 3
+            "type": 4
         },
         {
             "connectionType": 4,
@@ -278,7 +278,7 @@
             "libModel": 0,
             "name": "ESP32-8048S070",
             "separator": "->",
-            "type": 4
+            "type": 5
         },
         {
             "connectionType": 0,
@@ -286,7 +286,7 @@
             "libModel": 0,
             "name": "GC9A01",
             "separator": "->",
-            "type": 5
+            "type": 6
         },
         {
             "connectionType": 0,
@@ -294,7 +294,7 @@
             "libModel": 0,
             "name": "ST7735",
             "separator": "->",
-            "type": 8
+            "type": 7
         },
         {
             "connectionType": 0,
@@ -302,7 +302,7 @@
             "libModel": 0,
             "name": "ST7789",
             "separator": "->",
-            "type": 6
+            "type": 8
         },
         {
             "connectionType": 0,
@@ -327,6 +327,14 @@
             "name": "PDC8544",
             "separator": ".",
             "type": 11
+        },
+        {
+            "connectionType": 0,
+            "id": 12,
+            "libModel": 3,
+            "name": "SSD1306",
+            "separator": ".",
+            "type": 12
         }
     ],
     "touch": [
