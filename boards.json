@@ -305,6 +305,14 @@
             "name": "SSD1306",
             "separator": ".",
             "type": 12
+        },
+        {
+            "connectionType": 0,
+            "id": 13,
+            "libModel": 3,
+            "name": "ST7796",
+            "separator": "->",
+            "type": 13
         }
     ],
     "touch": [
