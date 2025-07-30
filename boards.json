@@ -215,36 +215,6 @@
                 "DISPLAY"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_XPT2046.png?alt=media&token=c0bf7779-db11-4714-a253-cccc88070db0"
-        },
-        {
-            "defaultSize": {
-                "height": 64,
-                "width": 128
-            },
-            "fullName": "GM009605 0.96in",
-            "id": 15,
-            "idDisplay": 10,
-            "idTouch": 0,
-            "shortName": "GM009605 0.96in",
-            "tags": [
-                "DISPLAY"
-            ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FI2C_0-96_GM009605.png?alt=media&token=41d9d505-759d-4a3f-8717-4cd77971cd1d"
-        },
-        {
-            "defaultSize": {
-                "height": 48,
-                "width": 84
-            },
-            "fullName": "NOKIA PDC8544 0.84in",
-            "id": 16,
-            "idDisplay": 11,
-            "idTouch": 0,
-            "shortName": "NOKIA PDC8544 0.84in",
-            "tags": [
-                "DISPLAY"
-            ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FNOKIA_PDC8544.png?alt=media&token=5f575484-8396-4ee5-bcbc-7983f5437d14"
         }
     ],
     "display": [
