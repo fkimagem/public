@@ -14,7 +14,8 @@
                 "ESP32",
                 "S3",
                 "GT911",
-                "TOUCH"
+                "TOUCH",
+				"CAPACITIVE"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_4-3_GT911_AMARELO.png?alt=media&token=70c91bbf-2732-4bc8-a6de-a60e5ffb1360"
         },
@@ -29,7 +30,9 @@
             "idTouch": 2,
             "shortName": "ESP32S3 4.3in XPT2046",
             "tags": [
-                "ESP32S3 4.3in XPT2046"
+                "ESP32",
+				"S3",
+				"XPT2046"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_4-3_XPT2046_AMARELO.png?alt=media&token=4941e554-3187-47c7-97c9-6e2ec748ecf8"
         },
@@ -38,14 +41,15 @@
                 "height": 480,
                 "width": 800
             },
-            "fullName": "ES32S3 7in XPT2046",
+            "fullName": "ES32S3 7in GT911",
             "id": 3,
             "idDisplay": 5,
-            "idTouch": 2,
-            "shortName": "ES32S3 7in XPT2046",
+            "idTouch": 1,
+            "shortName": "ES32S3 7in GT911",
             "tags": [
-                "DISPLAY",
-                "TOUCH"
+                "ESP32",
+                "S3",
+				"GT911"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_7_GT911_AMARELO.png?alt=media&token=3c91574f-bcbe-494c-ab19-9243597c524f"
         },
@@ -60,7 +64,8 @@
             "idTouch": 0,
             "shortName": "TFT GC9A01 1.28in",
             "tags": [
-                "DISPLAY"
+                "TFT",
+				"GC9A01"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-28_GC9A01.png?alt=media&token=dcb46a78-7c08-47d5-ab3d-ecad82359574"
         },
@@ -75,7 +80,8 @@
             "idTouch": 0,
             "shortName": "TFT 1.44in ST7735",
             "tags": [
-                "TFT 1.44in ST7735"
+                "TFT",
+				"ST7735"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-44_ST7735.png?alt=media&token=a273f318-4aa5-4f95-b4a1-f5a1f5ef6b2e"
         },
@@ -90,7 +96,7 @@
             "idTouch": 0,
             "shortName": "ST7789 1.54in",
             "tags": [
-                "DISPLAY"
+                "ST7789"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-54_ST7789_Blue.png?alt=media&token=034c324e-4cd7-4256-80e4-7dba63a44aae"
         },
@@ -105,7 +111,7 @@
             "idTouch": 0,
             "shortName": "ST7735 1.8in",
             "tags": [
-                "DISPLAY"
+                "ST7735"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-8_ST7735.png?alt=media&token=7c7a9937-b25f-4a89-b8cb-f8236cb9aa9e"
         },
@@ -120,9 +126,8 @@
             "idTouch": 0,
             "shortName": "ILI9225 TFT 2.2in",
             "tags": [
-                "DISPLAY",
                 "TFT",
-                "ILI9228"
+                "ILI9225"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2-2_ILI9225.png?alt=media&token=7fce4936-007b-4611-bd46-56502df2c451"
         },
@@ -137,7 +142,7 @@
             "idTouch": 2,
             "shortName": "TFT ILI9488 2.8in",
             "tags": [
-                "DISPLAY"
+                "ILI9488"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2-8_ILI9488_XPT2046.png?alt=media&token=f89c0c7e-ec19-4bc8-8396-8a2256650625"
         },
@@ -152,7 +157,7 @@
             "idTouch": 0,
             "shortName": "ST7789 2in BLUE BOARD",
             "tags": [
-                "DISPLAY"
+                "ST7789"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2_ST7789_Blue.png?alt=media&token=738aed6b-c833-4b0e-a143-dcd07af2be42"
         },
@@ -167,7 +172,7 @@
             "idTouch": 3,
             "shortName": "TFT ILI9488 3.5in",
             "tags": [
-                "DISPLAY"
+                "ILI9488"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ILI9488_FT6236V_Capacitive.png?alt=media&token=f464d1f1-53ff-4f89-9590-f4f9ad8ce25d"
         },
@@ -182,7 +187,7 @@
             "idTouch": 2,
             "shortName": "TFT ILI9488 3.5in",
             "tags": [
-                "DISPLAY"
+                "ILI9488"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ILI9488_XPT2046.png?alt=media&token=009d89fd-e44d-4e67-8e54-4729606d1a40"
         },
@@ -197,7 +202,7 @@
             "idTouch": 5,
             "shortName": "ILI9488 4in",
             "tags": [
-                "DISPLAY"
+                "ILI9488"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_FT6336U_AMARELO.png?alt=media&token=2f834f18-9061-4fab-b32f-20cc041930a7"
         },
@@ -212,7 +217,7 @@
             "idTouch": 2,
             "shortName": "TFT ILI9488in 4in",
             "tags": [
-                "DISPLAY"
+                "ILI9488in"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_XPT2046.png?alt=media&token=c0bf7779-db11-4714-a253-cccc88070db0"
         }
