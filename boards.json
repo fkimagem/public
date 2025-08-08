@@ -17,7 +17,7 @@
                 "TOUCH",
 				"CAPACITIVE"
             ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_8048043.jpeg?alt=media&token=f06bb076-e297-4300-975b-74832f5ea892"
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_4-3_GT911_AMARELO.png?alt=media&token=8794655d-22c9-4a65-a677-3bf6561552bb"
         },
         {
             "defaultSize": {
@@ -34,7 +34,7 @@
 				"S3",
 				"XPT2046"
             ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_4827043.jpeg?alt=media&token=f63c9b32-24a7-4769-b7a7-090268cf1a5e"
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_4-3_XPT2046_AMARELO.png?alt=media&token=6b59243c-448b-48e3-86b6-a5f41b0f2546"
         },
         {
             "defaultSize": {
@@ -51,7 +51,7 @@
                 "S3",
 				"GT911"
             ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_8048070.jpeg?alt=media&token=f73ef356-9e98-41f4-ae62-cdd9222506ff"
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_7_GT911_AMARELO.png?alt=media&token=6d75ef16-d6a6-4121-ba45-01aa256a825f"
         },
         {
             "defaultSize": {
