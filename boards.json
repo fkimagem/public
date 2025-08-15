@@ -220,6 +220,21 @@
                 "ILI9488in"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_XPT2046.png?alt=media&token=c0bf7779-db11-4714-a253-cccc88070db0"
+        },
+        {
+            "defaultSize": {
+                "height": 320,
+                "width": 170
+            },
+            "fullName": "ST7789 - 8bit",
+            "id": 15,
+            "idDisplay": 14,
+            "idTouch": 0,
+            "shortName": "ST7789 - 8bit",
+            "tags": [
+                "ST7789", "8bits"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FUndefined.png?alt=media&token=eec0927f-64ee-44ff-a142-41e89be81d16"
         }
     ],
     "display": [
@@ -275,7 +290,7 @@
             "connectionType": 0,
             "id": 8,
             "libModel": 0,
-            "name": "ST7789",
+            "name": "ST7789 - SPI",
             "separator": "->",
             "type": 8
         },
@@ -318,6 +333,14 @@
             "name": "ST7796",
             "separator": "->",
             "type": 13
+        },
+        {
+            "connectionType": 0,
+            "id": 14,
+            "libModel": 3,
+            "name": "ST7796 - 8bit",
+            "separator": "->",
+            "type": 14
         }
     ],
     "touch": [
