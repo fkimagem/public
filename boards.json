@@ -235,13 +235,73 @@
                 "ST7789", "8bits"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FUndefined.png?alt=media&token=eec0927f-64ee-44ff-a142-41e89be81d16"
+        },
+        {
+            "defaultSize": {
+                "height": 48,
+                "width": 84
+            },
+            "fullName": "PCD8544",
+            "id": 16,
+            "idDisplay": 11,
+            "idTouch": 0,
+            "shortName": "PCD8544",
+            "tags": [
+                "PCD8544", "SPI"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FNOKIA_PDC8544.png?alt=media&token=5f575484-8396-4ee5-bcbc-7983f5437d14"
+        },
+        {
+            "defaultSize": {
+                "height": 32,
+                "width": 128
+            },
+            "fullName": "SSD1306",
+            "id": 17,
+            "idDisplay": 12,
+            "idTouch": 0,
+            "shortName": "SSD1306",
+            "tags": [
+                "SSD1306", "I2C"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FI2C_0-96_GM009605.png?alt=media&token=41d9d505-759d-4a3f-8717-4cd77971cd1d"
+        },
+        {
+            "defaultSize": {
+                "height": 64,
+                "width": 128
+            },
+            "fullName": "ST7565",
+            "id": 18,
+            "idDisplay": 15,
+            "idTouch": 0,
+            "shortName": "ST7565",
+            "tags": [
+                "ST7565", "I2C"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FGMG12864.png?alt=media&token=8f194a08-1b64-4539-a07c-6a3a33178a16"
+        },
+        {
+            "defaultSize": {
+                "height": 480,
+                "width": 800
+            },
+            "fullName": "Waveshare 4.3in Touch capacitive ST7262",
+            "id": 19,
+            "idDisplay": 16,
+            "idTouch": 1,
+            "shortName": "Waveshare ST7262",
+            "tags": [
+                "ST7262", "GT911", "capacitive"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FUndefined.png?alt=media&token=eec0927f-64ee-44ff-a142-41e89be81d16"
         }
     ],
     "display": [
         {
             "connectionType": 0,
             "id": 1,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ILI9488",
             "separator": "->",
             "type": 1
@@ -249,7 +309,7 @@
         {
             "connectionType": 4,
             "id": 2,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ESP32-8048S043",
             "separator": "->",
             "type": 2
@@ -257,7 +317,7 @@
         {
             "connectionType": 4,
             "id": 4,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ESP32-4827S043",
             "separator": "->",
             "type": 4
@@ -265,7 +325,7 @@
         {
             "connectionType": 4,
             "id": 5,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ESP32-8048S070",
             "separator": "->",
             "type": 5
@@ -273,7 +333,7 @@
         {
             "connectionType": 0,
             "id": 6,
-            "libModel": 0,
+            "libModel": 1,
             "name": "GC9A01",
             "separator": "->",
             "type": 6
@@ -281,7 +341,7 @@
         {
             "connectionType": 0,
             "id": 7,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ST7735",
             "separator": "->",
             "type": 7
@@ -289,7 +349,7 @@
         {
             "connectionType": 0,
             "id": 8,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ST7789 - SPI",
             "separator": "->",
             "type": 8
@@ -297,7 +357,7 @@
         {
             "connectionType": 0,
             "id": 9,
-            "libModel": 0,
+            "libModel": 1,
             "name": "ILI9225",
             "separator": "->",
             "type": 9
@@ -305,7 +365,7 @@
         {
             "connectionType": 0,
             "id": 10,
-            "libModel": 2,
+            "libModel": 5,
             "name": "GM009605",
             "separator": ".",
             "type": 10
@@ -313,23 +373,23 @@
         {
             "connectionType": 0,
             "id": 11,
-            "libModel": 3,
+            "libModel": 4,
             "name": "PDC8544",
-            "separator": ".",
+            "separator": "->",
             "type": 11
         },
         {
             "connectionType": 0,
             "id": 12,
             "libModel": 3,
-            "name": "SSD1306",
-            "separator": ".",
+            "name": "SD1306",
+            "separator": "->",
             "type": 12
         },
         {
             "connectionType": 0,
             "id": 13,
-            "libModel": 3,
+            "libModel": 1,
             "name": "ST7796",
             "separator": "->",
             "type": 13
@@ -337,10 +397,26 @@
         {
             "connectionType": 0,
             "id": 14,
-            "libModel": 3,
+            "libModel": 1,
             "name": "ST7796 - 8bit",
             "separator": "->",
             "type": 14
+        },
+        {
+            "connectionType": 0,
+            "id": 15,
+            "libModel": 2,
+            "name": "ST7565 - U8G2",
+            "separator": "->",
+            "type": 15
+        },
+        {
+            "connectionType": 0,
+            "id": 16,
+            "libModel": 1,
+            "name": "ST7262 - Waveshare",
+            "separator": "->",
+            "type": 16
         }
     ],
     "touch": [
