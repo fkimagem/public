@@ -234,7 +234,7 @@
             "tags": [
                 "ST7789", "8bits"
             ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FUndefined.png?alt=media&token=eec0927f-64ee-44ff-a142-41e89be81d16"
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FLilygo_S3_ST7789.png?alt=media&token=b946aa57-a5ac-4bf5-836a-a29696fdb212"
         },
         {
             "defaultSize": {
@@ -294,7 +294,7 @@
             "tags": [
                 "ST7262", "GT911", "capacitive"
             ],
-            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FUndefined.png?alt=media&token=eec0927f-64ee-44ff-a142-41e89be81d16"
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FWaveshare_S3_GT911.png?alt=media&token=3a975712-a96e-45a1-be3f-4bc07b26668b"
         }
     ],
     "display": [
