@@ -2,8 +2,8 @@
     "devboards": [
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 800,
+                "width": 480
             },
             "fullName": "ESP32S3 4.3in GT911",
             "id": 1,
@@ -25,8 +25,8 @@
         },
         {
             "defaultSize": {
-                "height": 272,
-                "width": 480
+                "height": 480,
+                "width": 272
             },
             "fullName": "ESP32S3 4.3in XPT2046",
             "id": 2,
@@ -46,8 +46,8 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "height": 800,
+                "width": 480
             },
             "fullName": "ES32S3 7in GT911",
             "id": 3,
@@ -126,8 +126,8 @@
         },
         {
             "defaultSize": {
-                "height": 128,
-                "width": 160
+                "height": 160,
+                "width": 128
             },
             "fullName": "ST7735 1.8in",
             "id": 7,
@@ -145,8 +145,8 @@
         },
         {
             "defaultSize": {
-                "height": 176,
-                "width": 220
+                "height": 220,
+                "width": 176
             },
             "fullName": "ILI9225 TFT 2.2in",
             "id": 8,
@@ -165,8 +165,8 @@
         },
         {
             "defaultSize": {
-                "height": 240,
-                "width": 320
+                "height": 320,
+                "width": 240
             },
             "fullName": "TFT ILI9488 2.8in",
             "id": 9,
@@ -184,8 +184,8 @@
         },
         {
             "defaultSize": {
-                "height": 240,
-                "width": 320
+                "height": 320,
+                "width": 240
             },
             "fullName": "ST7789 2in BLUE BOARD",
             "id": 10,
@@ -203,8 +203,8 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488 3.5in",
             "id": 11,
@@ -222,8 +222,8 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488 3.5in",
             "id": 12,
@@ -241,8 +241,8 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "ILI9488 4in",
             "id": 13,
@@ -260,8 +260,8 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488in 4in",
             "id": 14,
@@ -380,7 +380,8 @@
             "libModel": 1,
             "name": "ILI9488",
             "separator": "->",
-            "type": 1
+            "type": 1,
+			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
             "connectionType": 4,
@@ -388,7 +389,8 @@
             "libModel": 1,
             "name": "ESP32-8048S043",
             "separator": "->",
-            "type": 2
+            "type": 2,
+			"pins": []
         },
         {
             "connectionType": 4,
@@ -396,7 +398,8 @@
             "libModel": 1,
             "name": "ESP32-4827S043",
             "separator": "->",
-            "type": 4
+            "type": 4,
+			"pins": []
         },
         {
             "connectionType": 4,
@@ -404,7 +407,8 @@
             "libModel": 1,
             "name": "ESP32-8048S070",
             "separator": "->",
-            "type": 5
+            "type": 5,
+			"pins": []
         },
         {
             "connectionType": 0,
@@ -412,7 +416,8 @@
             "libModel": 1,
             "name": "GC9A01",
             "separator": "->",
-            "type": 6
+            "type": 6,
+			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
             "connectionType": 0,
@@ -420,7 +425,8 @@
             "libModel": 1,
             "name": "ST7735",
             "separator": "->",
-            "type": 7
+            "type": 7,
+			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
             "connectionType": 0,
@@ -428,7 +434,8 @@
             "libModel": 1,
             "name": "ST7789 - SPI",
             "separator": "->",
-            "type": 8
+            "type": 8,
+			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
             "connectionType": 0,
@@ -436,7 +443,8 @@
             "libModel": 1,
             "name": "ILI9225",
             "separator": "->",
-            "type": 9
+            "type": 9,
+			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
             "connectionType": 0,
@@ -452,7 +460,8 @@
             "libModel": 4,
             "name": "PDC8544",
             "separator": "->",
-            "type": 11
+            "type": 11,
+			"pins": ["CS", "RST", "DC", "CLK", "DIN"]
         },
         {
             "connectionType": 0,
@@ -460,7 +469,8 @@
             "libModel": 3,
             "name": "SD1306",
             "separator": "->",
-            "type": 12
+            "type": 12,
+			"pins": ["SDA", "RST", "SCL", "ADDRESS"]
         },
         {
             "connectionType": 0,
@@ -468,7 +478,8 @@
             "libModel": 1,
             "name": "ST7796",
             "separator": "->",
-            "type": 13
+            "type": 13,
+			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
             "connectionType": 0,
@@ -476,7 +487,8 @@
             "libModel": 1,
             "name": "ST7789 - 8bit",
             "separator": "->",
-            "type": 14
+            "type": 14,
+			"pins": []
         },
         {
             "connectionType": 0,
@@ -484,7 +496,8 @@
             "libModel": 2,
             "name": "ST7565 - U8G2",
             "separator": "->",
-            "type": 15
+            "type": 15,
+			"pins": ["DT","CS","DC","RST"]
         },
         {
             "connectionType": 0,
@@ -492,7 +505,8 @@
             "libModel": 1,
             "name": "ST7262 - Waveshare",
             "separator": "->",
-            "type": 16
+            "type": 16,
+			"pins": []
         }
     ],
     "touch": [
@@ -502,7 +516,8 @@
             "id": 1,
             "name": "GT911",
             "needCalibration": false,
-            "type": 1
+            "type": 1,
+			"pins": ["SCL", "SDA", "INT", "RST"]
         },
         {
             "connectionType": 0,
@@ -510,7 +525,8 @@
             "id": 2,
             "name": "XPT2046",
             "needCalibration": true,
-            "type": 2
+            "type": 2,
+			"pins": ["CS", "CLK", "MOSI", "MISO"]
         },
         {
             "connectionType": 1,
@@ -518,7 +534,8 @@
             "id": 3,
             "name": "FT6236U",
             "needCalibration": false,
-            "type": 3
+            "type": 3,
+			"pins": ["SCL", "SDA"]
         },
         {
             "connectionType": 1,
@@ -526,7 +543,8 @@
             "id": 4,
             "name": "CST816",
             "needCalibration": false,
-            "type": 5
+            "type": 5,
+			"pins": []
         },
         {
             "connectionType": 1,
@@ -534,7 +552,8 @@
             "id": 5,
             "name": "FT6336U",
             "needCalibration": false,
-            "type": 4
+            "type": 4,
+			"pins": ["SCL", "SDA", "INT", "RST"]
         }
     ]
 }
