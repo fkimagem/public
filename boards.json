@@ -252,7 +252,7 @@
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
-            "shortName": "ILI9488 4in",
+            "shortName": "ILI9488 4in Ft6336",
             "tags": [
                 "ILI9488"
             ],
@@ -371,6 +371,44 @@
                 "ST7262", "GT911", "capacitive"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FWaveshare_S3_GT911.png?alt=media&token=3a975712-a96e-45a1-be3f-4bc07b26668b"
+        },
+        {
+            "defaultSize": {
+                "height": 1280,
+                "width": 800
+            },
+            "fullName": "Waveshare 10.1in Touch capacitive DSI",
+            "id": 20,
+            "idDisplay": 17,
+            "idTouch": 6,
+			"isIPS": true,
+			"isBGR": false,
+			"invertColors": false,
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "shortName": "Waveshare DSI 10.1",
+            "tags": [
+                "JD9365", "GSL3680", "capacitive", "waveshare", "dsi"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FEsp32P4_JD9365_GSL3680.png?alt=media&token=725d0f91-3f7c-432c-b932-70196936df89"
+        },
+        {
+            "defaultSize": {
+                "height": 1280,
+                "width": 800
+            },
+            "fullName": "3.5in capacitive blackboard st7796",
+            "id": 21,
+            "idDisplay": 13,
+            "idTouch": 5,
+			"isIPS": true,
+			"isBGR": false,
+			"invertColors": false,
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "shortName": "Black ST7796 3.5",
+            "tags": [
+                "ST7796", "FT6336", "capacitive"
+            ],
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ST7796_FT6336U_BLACK.png?alt=media&token=17e3a238-8116-447d-bcb9-46ab159370cc"
         }
     ],
     "display": [
@@ -507,6 +545,15 @@
             "separator": "->",
             "type": 16,
 			"pins": []
+        },
+        {
+            "connectionType": 5,
+            "id": 17,
+            "libModel": 1,
+            "name": "JD9365 - DSI",
+            "separator": "->",
+            "type": 17,
+			"pins": []
         }
     ],
     "touch": [
@@ -553,6 +600,15 @@
             "name": "FT6336U",
             "needCalibration": false,
             "type": 4,
+			"pins": ["SCL", "SDA", "INT", "RST"]
+        },
+        {
+            "connectionType": 1,
+            "defineName": "TOUCH_GSL3680",
+            "id": 6,
+            "name": "GSL3680",
+            "needCalibration": false,
+            "type": 6,
 			"pins": ["SCL", "SDA", "INT", "RST"]
         }
     ]
