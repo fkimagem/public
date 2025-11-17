@@ -46,17 +46,17 @@
         },
         {
             "defaultSize": {
-                "height": 800,
-                "width": 480
+                "height": 480,
+                "width": 800
             },
             "fullName": "ES32S3 7in GT911",
             "id": 3,
             "idDisplay": 5,
             "idTouch": 1,
-			"isIPS": true,
+			"isIPS": false,
 			"isBGR": false,
 			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
             "shortName": "ES32S3 7in GT911",
             "tags": [
                 "ESP32",
@@ -409,6 +409,44 @@
                 "ST7796", "FT6336", "capacitive"
             ],
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ST7796_FT6336U_BLACK.png?alt=media&token=17e3a238-8116-447d-bcb9-46ab159370cc"
+        },
+        {
+            "defaultSize": {
+                "height": 600,
+                "width": 1024
+            },
+            "fullName": "Guition 7in Touch capacitive DSI",
+            "id": 22,
+            "idDisplay": 18,
+            "idTouch": 1,
+			"isIPS": false,
+			"isBGR": false,
+			"invertColors": false,
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "shortName": "Guition DSI 7.0",
+            "tags": [
+                "JD9165", "GT911", "capacitive", "guition", "dsi"
+            ],
+            "urlImage": ""
+        },
+        {
+            "defaultSize": {
+                "height": 320,
+                "width": 240
+            },
+            "fullName": "Guition 2.8in Touch capacitive",
+            "id": 23,
+            "idDisplay": 8,
+            "idTouch": 7,
+			"isIPS": false,
+			"isBGR": false,
+			"invertColors": false,
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "shortName": "Guition 2.8",
+            "tags": [
+                "ST7789", "CST820", "capacitive", "guition"
+            ],
+            "urlImage": ""
         }
     ],
     "display": [
@@ -554,6 +592,15 @@
             "separator": "->",
             "type": 17,
 			"pins": []
+        },
+        {
+            "connectionType": 5,
+            "id": 18,
+            "libModel": 1,
+            "name": "JD9165 - DSI",
+            "separator": "->",
+            "type": 18,
+			"pins": []
         }
     ],
     "touch": [
@@ -610,6 +657,15 @@
             "needCalibration": false,
             "type": 6,
 			"pins": ["SCL", "SDA", "INT", "RST"]
+        },
+        {
+            "connectionType": 1,
+            "defineName": "TOUCH_CST820",
+            "id": 7,
+            "name": "CST820",
+            "needCalibration": false,
+            "type": 7,
+			"pins": []
         }
     ]
 }
