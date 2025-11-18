@@ -441,7 +441,7 @@
 			"isIPS": false,
 			"isBGR": false,
 			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
             "shortName": "Guition 2.8",
             "tags": [
                 "ST7789", "CST820", "capacitive", "guition"
