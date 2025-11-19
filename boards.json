@@ -427,7 +427,7 @@
             "tags": [
                 "JD9165", "GT911", "capacitive", "guition", "dsi"
             ],
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32PT_TFT_JD9165_7_GT911_AMARELO.png?alt=media&token=7b16aeaa-f3ab-4296-86e4-25854dbddc0a"
         },
         {
             "defaultSize": {
@@ -446,7 +446,7 @@
             "tags": [
                 "ST7789", "CST820", "capacitive", "guition"
             ],
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32_TFT_ST7789_2-8_CST820_AMARELO.png?alt=media&token=ff9eb45e-9ef8-4857-a39e-caf2074424d1"
         }
     ],
     "display": [
