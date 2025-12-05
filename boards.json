@@ -458,7 +458,7 @@
             },
             "fullName": "Guition 2.8in Touch capacitive",
             "id": 23,
-            "idDisplay": 8,
+            "idDisplay": 20,
             "idTouch": 7,
 			"isIPS": false,
 			"isBGR": false,
@@ -652,6 +652,15 @@
             "name": "ST7701 - DSI",
             "separator": "->",
             "type": 19,
+			"pins": []
+        },
+        {
+            "connectionType": 0,
+            "id": 20,
+            "libModel": 1,
+            "name": "ST7789 - EMBED",
+            "separator": "->",
+            "type": 20,
 			"pins": []
         }
     ],
