@@ -252,12 +252,12 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
 			"defaultTouch": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
             "fullName": "TFT ILI9488 3.5in",
             "id": 11,
@@ -276,12 +276,12 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
 			"defaultTouch": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
             "fullName": "TFT ILI9488 3.5in",
             "id": 12,
@@ -300,12 +300,12 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
 			"defaultTouch": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
             "fullName": "ILI9488 4in",
             "id": 13,
@@ -324,14 +324,14 @@
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
 			"defaultTouch": {
-                "height": 480,
-                "width": 320
+                "height": 320,
+                "width": 480
             },
-            "fullName": "TFT ILI9488in 4in",
+            "fullName": "TFT ILI9488 4in",
             "id": 14,
             "idDisplay": 1,
             "idTouch": 2,
