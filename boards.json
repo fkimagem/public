@@ -259,7 +259,7 @@
                 "height": 320,
                 "width": 480
             },
-            "fullName": "TFT ILI9488 3.5in",
+            "fullName": "ILI9488 3.5in - FT6236",
             "id": 11,
             "idDisplay": 1,
             "idTouch": 3,
@@ -283,7 +283,7 @@
                 "height": 320,
                 "width": 480
             },
-            "fullName": "TFT ILI9488 3.5in",
+            "fullName": "ILI9488 3.5in - XPT2046",
             "id": 12,
             "idDisplay": 1,
             "idTouch": 2,
@@ -291,7 +291,7 @@
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false}],
-            "shortName": "TFT ILI9488 3.5in",
+            "shortName": "TFT ILI9488 3.5in - XPT2046",
             "tags": [
                 "ILI9488"
             ],
@@ -300,12 +300,12 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
 			"defaultTouch": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "ILI9488 4in",
             "id": 13,
@@ -315,21 +315,21 @@
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
-            "shortName": "ILI9488 4in Ft6336",
+            "shortName": "ILI9488 4in - FT6336",
             "tags": [
-                "ILI9488"
+                "ILI9488", "FT6336", "CAPACITIVE"
             ],
 			"defaultMCU": "ESP32",
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_FT6336U_AMARELO.png?alt=media&token=2f834f18-9061-4fab-b32f-20cc041930a7"
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
 			"defaultTouch": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "TFT ILI9488 4in",
             "id": 14,
@@ -339,9 +339,9 @@
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false}],
-            "shortName": "TFT ILI9488in 4in",
+            "shortName": "TFT ILI9488in 4in - XPT2046",
             "tags": [
-                "ILI9488in"
+                "ILI9488in", "XPT2046", "CAPACITIVE"
             ],
 			"defaultMCU": "ESP32",
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_XPT2046.png?alt=media&token=c0bf7779-db11-4714-a253-cccc88070db0"
