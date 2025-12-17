@@ -584,7 +584,7 @@
                 "ST7701", "GT911", "capacitive", "guition", "dsi"
             ],
 			"defaultMCU": "ESP32P4_EMBEDDED",
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FEsp32_P4_JC4880P443C.png?alt=media&token=9c91ad00-e7af-451b-b897-3082ba7868c5"
         }
     ],
     "display": [
