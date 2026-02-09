@@ -95,7 +95,7 @@
             "id": 4,
             "idDisplay": 6,
             "idTouch": 0,
-			"isIPS": false,
+			"isIPS": true,
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
@@ -121,7 +121,7 @@
             "id": 5,
             "idDisplay": 7,
             "idTouch": 0,
-			"isIPS": false,
+			"isIPS": true,
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
@@ -287,12 +287,12 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
 			"defaultTouch": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "ILI9488 3.5in - XPT2046",
             "id": 12,
