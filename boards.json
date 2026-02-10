@@ -262,12 +262,12 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
 			"defaultTouch": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "ILI9488 3.5in - FT6236",
             "id": 11,
