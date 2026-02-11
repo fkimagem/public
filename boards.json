@@ -373,7 +373,7 @@
             "id": 15,
             "idDisplay": 14,
             "idTouch": 0,
-			"isIPS": false,
+			"isIPS": true,
 			"isBGR": false,
 			"invertColors": false,
 			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
