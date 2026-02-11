@@ -720,7 +720,7 @@
 			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
         },
         {
-            "connectionType": 0,
+            "connectionType": 4,
             "id": 14,
             "libModel": 1,
             "name": "ST7789 - 8bit",
