@@ -693,7 +693,7 @@
             "type": 10
         },
         {
-            "connectionType": 0,
+            "connectionType": 1,
             "id": 11,
             "libModel": 4,
             "name": "PDC8544",
@@ -702,7 +702,7 @@
 			"pins": ["CS", "RST", "DC", "CLK", "DIN"]
         },
         {
-            "connectionType": 0,
+            "connectionType": 1,
             "id": 12,
             "libModel": 3,
             "name": "SD1306",
