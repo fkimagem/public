@@ -2,612 +2,1192 @@
     "devboards": [
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "width": 800,
+                "height": 480
             },
-			"defaultTouch":{
-				"height": 480,
-				"width": 800
-			},
+            "defaultTouch": {
+                "width": 800,
+                "height": 480
+            },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "ESP32S3_8048s043 GT911",
             "id": 1,
             "idDisplay": 2,
             "idTouch": 1,
             "shortName": "ESP32S3 4.3in GT911",
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "tags": [
                 "ESP32",
                 "S3",
                 "GT911",
                 "TOUCH",
-				"CAPACITIVE"
+                "CAPACITIVE"
             ],
-			"defaultMCU": "ESP32S3_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32S3_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_4-3_GT911_AMARELO.png?alt=media&token=8794655d-22c9-4a65-a677-3bf6561552bb"
         },
         {
             "defaultSize": {
-                "height": 272,
-                "width": 480
-            },"defaultTouch": {
-                "height": 272,
-                "width": 480
+                "width": 480,
+                "height": 272
             },
+            "defaultTouch": {
+                "width": 480,
+                "height": 272
+            },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "ESP32S3 4.3in XPT2046",
             "id": 2,
             "idDisplay": 4,
             "idTouch": 2,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ESP32S3 4.3in XPT2046",
             "tags": [
                 "ESP32",
-				"S3",
-				"XPT2046"
+                "S3",
+                "XPT2046"
             ],
-			"defaultMCU": "ESP32S3_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32S3_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_4-3_XPT2046_AMARELO.png?alt=media&token=6b59243c-448b-48e3-86b6-a5f41b0f2546"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "width": 800,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 800
+            "defaultTouch": {
+                "width": 800,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "ES32S3 7in GT911",
             "id": 3,
             "idDisplay": 5,
             "idTouch": 1,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "shortName": "ES32S3 7in GT911",
             "tags": [
                 "ESP32S3",
                 "S3",
-				"GT911"
+                "GT911"
             ],
-			"defaultMCU": "ESP32S3_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32S3_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32S3_TFT_7_GT911_AMARELO.png?alt=media&token=6d75ef16-d6a6-4121-ba45-01aa256a825f"
         },
         {
             "defaultSize": {
-                "height": 240,
-                "width": 240
+                "width": 240,
+                "height": 240
             },
-			"defaultTouch": {
-                "height": 240,
-                "width": 240
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "TFT GC9A01",
             "id": 4,
             "idDisplay": 6,
             "idTouch": 0,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "TFT GC9A01 1.28in",
             "tags": [
                 "TFT",
-				"GC9A01"
+                "GC9A01"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-28_GC9A01.png?alt=media&token=dcb46a78-7c08-47d5-ab3d-ecad82359574"
         },
         {
             "defaultSize": {
-                "height": 128,
-                "width": 128
+                "width": 128,
+                "height": 128
             },
-			"defaultTouch": {
-                "height": 128,
-                "width": 128
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "TFT 1.44in ST7735",
             "id": 5,
             "idDisplay": 7,
             "idTouch": 0,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "TFT 1.44in ST7735",
             "tags": [
                 "TFT",
-				"ST7735"
+                "ST7735"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-44_ST7735.png?alt=media&token=a273f318-4aa5-4f95-b4a1-f5a1f5ef6b2e"
         },
         {
             "defaultSize": {
-                "height": 240,
-                "width": 240
+                "width": 240,
+                "height": 240
             },
-			"defaultTouch": {
-                "height": 240,
-                "width": 240
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "ST7789",
             "id": 6,
             "idDisplay": 8,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ST7789 1.54in",
             "tags": [
                 "ST7789"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-54_ST7789_Blue.png?alt=media&token=034c324e-4cd7-4256-80e4-7dba63a44aae"
         },
         {
             "defaultSize": {
-                "height": 160,
-                "width": 128
+                "width": 128,
+                "height": 160
             },
-			"defaultTouch": {
-                "height": 160,
-                "width": 128
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ST7735 1.8in",
             "id": 7,
             "idDisplay": 7,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ST7735 1.8in",
             "tags": [
                 "ST7735"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_1-8_ST7735.png?alt=media&token=7c7a9937-b25f-4a89-b8cb-f8236cb9aa9e"
         },
         {
             "defaultSize": {
-                "height": 220,
-                "width": 176
+                "width": 176,
+                "height": 220
             },
-			"defaultTouch": {
-                "height": 160,
-                "width": 128
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ILI9225 TFT 2.2in",
             "id": 8,
             "idDisplay": 9,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ILI9225 TFT 2.2in",
             "tags": [
                 "TFT",
                 "ILI9225"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2-2_ILI9225.png?alt=media&token=7fce4936-007b-4611-bd46-56502df2c451"
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 240
+                "width": 240,
+                "height": 320
             },
-			"defaultTouch": {
-                "height": 320,
-                "width": 240
+            "defaultTouch": {
+                "width": 240,
+                "height": 320
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "TFT ILI9488 2.8in",
             "id": 9,
             "idDisplay": 1,
             "idTouch": 2,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "TFT ILI9488 2.8in",
             "tags": [
                 "ILI9488"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2-8_ILI9488_XPT2046.png?alt=media&token=f89c0c7e-ec19-4bc8-8396-8a2256650625"
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 240
+                "width": 240,
+                "height": 320
             },
-			"defaultTouch": {
-                "height": 320,
-                "width": 240
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ST7789 2in BLUE BOARD",
             "id": 10,
             "idDisplay": 8,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ST7789 2in BLUE BOARD",
             "tags": [
                 "ST7789"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_2_ST7789_Blue.png?alt=media&token=738aed6b-c833-4b0e-a143-dcd07af2be42"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "width": 320,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 320
+            "defaultTouch": {
+                "width": 320,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ILI9488 3.5in - FT6236",
             "id": 11,
             "idDisplay": 1,
             "idTouch": 3,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": true, "invertY": true},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "TFT ILI9488 3.5in",
             "tags": [
                 "ILI9488"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ILI9488_FT6236V_Capacitive.png?alt=media&token=f464d1f1-53ff-4f89-9590-f4f9ad8ce25d"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "width": 320,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 320
+            "defaultTouch": {
+                "width": 320,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ILI9488 3.5in - XPT2046",
             "id": 12,
             "idDisplay": 1,
             "idTouch": 2,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "TFT ILI9488 3.5in - XPT2046",
             "tags": [
                 "ILI9488"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ILI9488_XPT2046.png?alt=media&token=009d89fd-e44d-4e67-8e54-4729606d1a40"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "width": 320,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 320
+            "defaultTouch": {
+                "width": 320,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ILI9488 4in",
             "id": 13,
             "idDisplay": 1,
             "idTouch": 5,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "shortName": "ILI9488 4in - FT6336",
             "tags": [
-                "ILI9488", "FT6336", "CAPACITIVE"
+                "ILI9488",
+                "FT6336",
+                "CAPACITIVE"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_FT6336U_AMARELO.png?alt=media&token=2f834f18-9061-4fab-b32f-20cc041930a7"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "width": 320,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 320
+            "defaultTouch": {
+                "width": 320,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "TFT ILI9488 4in",
             "id": 14,
             "idDisplay": 1,
             "idTouch": 2,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "TFT ILI9488in 4in - XPT2046",
             "tags": [
-                "ILI9488in", "XPT2046", "CAPACITIVE"
+                "ILI9488in",
+                "XPT2046",
+                "CAPACITIVE"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_XPT2046.png?alt=media&token=c0bf7779-db11-4714-a253-cccc88070db0"
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 170
+                "width": 170,
+                "height": 320
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 320
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "ST7789 - 8bit",
             "id": 15,
             "idDisplay": 14,
             "idTouch": 0,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ST7789 - 8bit",
             "tags": [
-                "ST7789", "8bits"
+                "ST7789",
+                "8bits"
             ],
-			"defaultMCU": "ESP32S3_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32S3_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FLilygo_S3_ST7789.png?alt=media&token=b946aa57-a5ac-4bf5-836a-a29696fdb212"
         },
         {
             "defaultSize": {
-                "height": 48,
-                "width": 84
+                "width": 84,
+                "height": 48
             },
-			"defaultTouch": {
-                "height": 48,
-                "width": 84
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "PCD8544",
             "id": 16,
             "idDisplay": 11,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "PCD8544",
             "tags": [
-                "PCD8544", "SPI"
+                "PCD8544",
+                "SPI"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FNOKIA_PDC8544.png?alt=media&token=5f575484-8396-4ee5-bcbc-7983f5437d14"
         },
         {
             "defaultSize": {
-                "height": 32,
-                "width": 128
+                "width": 128,
+                "height": 32
             },
-			"defaultTouch": {
-                "height": 32,
-                "width": 128
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "SSD1306",
             "id": 17,
             "idDisplay": 12,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "SSD1306",
             "tags": [
-                "SSD1306", "I2C"
+                "SSD1306",
+                "I2C"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FI2C_0-96_GM009605.png?alt=media&token=41d9d505-759d-4a3f-8717-4cd77971cd1d"
         },
         {
             "defaultSize": {
-                "height": 64,
-                "width": 128
+                "width": 128,
+                "height": 64
             },
-			"defaultTouch": {
-                "height": 64,
-                "width": 128
+            "defaultTouch": {
+                "width": 0,
+                "height": 0
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "ST7565",
             "id": 18,
             "idDisplay": 15,
             "idTouch": 0,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "ST7565",
             "tags": [
-                "ST7565", "I2C"
+                "ST7565",
+                "I2C"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FGMG12864.png?alt=media&token=8f194a08-1b64-4539-a07c-6a3a33178a16"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 800
+                "width": 800,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 800
+            "defaultTouch": {
+                "width": 800,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "Waveshare 4.3in Touch capacitive ST7262",
             "id": 19,
             "idDisplay": 16,
             "idTouch": 1,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "Waveshare ST7262",
             "tags": [
-                "ST7262", "GT911", "capacitive"
+                "ST7262",
+                "GT911",
+                "capacitive"
             ],
-			"defaultMCU": "ESP32P4_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32P4_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FWaveshare_S3_GT911.png?alt=media&token=3a975712-a96e-45a1-be3f-4bc07b26668b"
         },
         {
             "defaultSize": {
-                "height": 1280,
-                "width": 800
+                "width": 800,
+                "height": 1280
             },
-			"defaultTouch": {
-                "height": 1280,
-                "width": 800
+            "defaultTouch": {
+                "width": 800,
+                "height": 1280
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "Waveshare 10.1in Touch capacitive DSI",
             "id": 20,
             "idDisplay": 17,
             "idTouch": 6,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                }
+            ],
             "shortName": "Waveshare DSI 10.1",
             "tags": [
-                "JD9365", "GSL3680", "capacitive", "waveshare", "dsi"
+                "JD9365",
+                "GSL3680",
+                "capacitive",
+                "waveshare",
+                "dsi"
             ],
-			"defaultMCU": "ESP32P4_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32P4_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FEsp32P4_JD9365_GSL3680.png?alt=media&token=725d0f91-3f7c-432c-b932-70196936df89"
         },
         {
             "defaultSize": {
-                "height": 480,
-                "width": 320
+                "width": 320,
+                "height": 480
             },
-			"defaultTouch": {
-                "height": 480,
-                "width": 320
+            "defaultTouch": {
+                "width": 320,
+                "height": 480
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "3.5in capacitive blackboard st7796",
             "id": 21,
             "idDisplay": 13,
             "idTouch": 5,
-			"isIPS": true,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "shortName": "Black ST7796 3.5",
             "tags": [
-                "ST7796", "FT6336", "capacitive"
+                "ST7796",
+                "FT6336",
+                "capacitive"
             ],
-			"defaultMCU": "ESP32",
-			"lockMCU": false,
+            "defaultMCU": "ESP32",
+            "lockMCU": false,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_3-5_ST7796_FT6336U_BLACK.png?alt=media&token=17e3a238-8116-447d-bcb9-46ab159370cc"
         },
         {
             "defaultSize": {
-                "height": 600,
-                "width": 1024
+                "width": 1024,
+                "height": 600
             },
-			"defaultTouch": {
-                "height": 600,
-                "width": 1024
+            "defaultTouch": {
+                "width": 1024,
+                "height": 600
             },
+            "lockRotation": false,
+            "defaultRotation": 0,
             "fullName": "Guition 7in Touch capacitive DSI",
             "id": 22,
             "idDisplay": 18,
             "idTouch": 1,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "shortName": "Guition DSI 7.0",
             "tags": [
-                "JD9165", "GT911", "capacitive", "guition", "dsi"
+                "JD9165",
+                "GT911",
+                "capacitive",
+                "guition",
+                "dsi"
             ],
-			"defaultMCU": "ESP32P4_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32P4_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32PT_TFT_JD9165_7_GT911_AMARELO.png?alt=media&token=7b16aeaa-f3ab-4296-86e4-25854dbddc0a"
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 240
+                "width": 240,
+                "height": 320
             },
-			"defaultTouch": {
-                "height": 320,
-                "width": 240
+            "defaultTouch": {
+                "width": 240,
+                "height": 320
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "Guition 2.8in Touch capacitive",
             "id": 23,
             "idDisplay": 20,
             "idTouch": 7,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "shortName": "Guition 2.8",
             "tags": [
-                "ST7789", "CST820", "capacitive", "guition"
+                "ST7789",
+                "CST820",
+                "capacitive",
+                "guition"
             ],
-			"defaultMCU": "ESP32_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32_TFT_ST7789_2-8_CST820_AMARELO.png?alt=media&token=ff9eb45e-9ef8-4857-a39e-caf2074424d1"
         },
         {
             "defaultSize": {
-                "height": 800,
-                "width": 480
+                "width": 480,
+                "height": 800
             },
-			"defaultTouch": {
-                "height": 800,
-                "width": 480
+            "defaultTouch": {
+                "width": 480,
+                "height": 800
             },
+            "lockRotation": false,
+            "defaultRotation": 1,
             "fullName": "Guition 4in Touch capacitive DSI",
             "id": 24,
             "idDisplay": 19,
             "idTouch": 1,
-			"isIPS": false,
-			"isBGR": false,
-			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+            "isIPS": false,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
             "shortName": "Guition DSI 4.0",
             "tags": [
-                "ST7701", "GT911", "capacitive", "guition", "dsi"
+                "ST7701",
+                "GT911",
+                "capacitive",
+                "guition",
+                "dsi"
             ],
-			"defaultMCU": "ESP32P4_EMBEDDED",
-			"lockMCU": true,
+            "defaultMCU": "ESP32P4_EMBEDDED",
+            "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FEsp32_P4_JC4880P443C.png?alt=media&token=9c91ad00-e7af-451b-b897-3082ba7868c5"
         }
     ],
@@ -619,7 +1199,14 @@
             "name": "ILI9488",
             "separator": "->",
             "type": 1,
-			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
+            "pins": [
+                "CS",
+                "MISO",
+                "MOSI",
+                "DC",
+                "CLK",
+                "RST"
+            ]
         },
         {
             "connectionType": 4,
@@ -628,7 +1215,7 @@
             "name": "ESP32-8048S043",
             "separator": "->",
             "type": 2,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 4,
@@ -637,7 +1224,7 @@
             "name": "ESP32-4827S043",
             "separator": "->",
             "type": 4,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 4,
@@ -646,7 +1233,7 @@
             "name": "ESP32-8048S070",
             "separator": "->",
             "type": 5,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 0,
@@ -655,7 +1242,14 @@
             "name": "GC9A01",
             "separator": "->",
             "type": 6,
-			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
+            "pins": [
+                "CS",
+                "MISO",
+                "MOSI",
+                "DC",
+                "CLK",
+                "RST"
+            ]
         },
         {
             "connectionType": 0,
@@ -664,7 +1258,14 @@
             "name": "ST7735",
             "separator": "->",
             "type": 7,
-			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
+            "pins": [
+                "CS",
+                "MISO",
+                "MOSI",
+                "DC",
+                "CLK",
+                "RST"
+            ]
         },
         {
             "connectionType": 0,
@@ -673,7 +1274,14 @@
             "name": "ST7789 - SPI",
             "separator": "->",
             "type": 8,
-			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
+            "pins": [
+                "CS",
+                "MISO",
+                "MOSI",
+                "DC",
+                "CLK",
+                "RST"
+            ]
         },
         {
             "connectionType": 0,
@@ -682,7 +1290,14 @@
             "name": "ILI9225",
             "separator": "->",
             "type": 9,
-			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
+            "pins": [
+                "CS",
+                "MISO",
+                "MOSI",
+                "DC",
+                "CLK",
+                "RST"
+            ]
         },
         {
             "connectionType": 0,
@@ -699,7 +1314,13 @@
             "name": "PDC8544",
             "separator": "->",
             "type": 11,
-			"pins": ["CS", "RST", "DC", "CLK", "DIN"]
+            "pins": [
+                "CS",
+                "RST",
+                "DC",
+                "CLK",
+                "DIN"
+            ]
         },
         {
             "connectionType": 1,
@@ -708,7 +1329,12 @@
             "name": "SD1306",
             "separator": "->",
             "type": 12,
-			"pins": ["SDA", "RST", "SCL", "ADDRESS"]
+            "pins": [
+                "SDA",
+                "RST",
+                "SCL",
+                "ADDRESS"
+            ]
         },
         {
             "connectionType": 0,
@@ -717,7 +1343,14 @@
             "name": "ST7796",
             "separator": "->",
             "type": 13,
-			"pins": ["CS", "MISO", "MOSI", "DC", "CLK", "RST"]
+            "pins": [
+                "CS",
+                "MISO",
+                "MOSI",
+                "DC",
+                "CLK",
+                "RST"
+            ]
         },
         {
             "connectionType": 4,
@@ -726,7 +1359,7 @@
             "name": "ST7789 - 8bit",
             "separator": "->",
             "type": 14,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 0,
@@ -735,7 +1368,12 @@
             "name": "ST7565 - U8G2",
             "separator": "->",
             "type": 15,
-			"pins": ["DT","CS","DC","RST"]
+            "pins": [
+                "DT",
+                "CS",
+                "DC",
+                "RST"
+            ]
         },
         {
             "connectionType": 0,
@@ -744,7 +1382,7 @@
             "name": "ST7262 - Waveshare",
             "separator": "->",
             "type": 16,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 5,
@@ -753,7 +1391,7 @@
             "name": "JD9365 - DSI",
             "separator": "->",
             "type": 17,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 5,
@@ -762,7 +1400,7 @@
             "name": "JD9165 - DSI",
             "separator": "->",
             "type": 18,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 5,
@@ -771,7 +1409,7 @@
             "name": "ST7701 - DSI",
             "separator": "->",
             "type": 19,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 0,
@@ -780,7 +1418,7 @@
             "name": "ST7789 - EMBED",
             "separator": "->",
             "type": 20,
-			"pins": []
+            "pins": []
         }
     ],
     "touch": [
@@ -791,7 +1429,12 @@
             "name": "GT911",
             "needCalibration": false,
             "type": 1,
-			"pins": ["SCL", "SDA", "INT", "RST"]
+            "pins": [
+                "SCL",
+                "SDA",
+                "INT",
+                "RST"
+            ]
         },
         {
             "connectionType": 0,
@@ -800,7 +1443,12 @@
             "name": "XPT2046",
             "needCalibration": true,
             "type": 2,
-			"pins": ["CS", "CLK", "MOSI", "MISO"]
+            "pins": [
+                "CS",
+                "CLK",
+                "MOSI",
+                "MISO"
+            ]
         },
         {
             "connectionType": 1,
@@ -809,7 +1457,10 @@
             "name": "FT6236U",
             "needCalibration": false,
             "type": 3,
-			"pins": ["SCL", "SDA"]
+            "pins": [
+                "SCL",
+                "SDA"
+            ]
         },
         {
             "connectionType": 1,
@@ -818,7 +1469,7 @@
             "name": "CST816",
             "needCalibration": false,
             "type": 5,
-			"pins": []
+            "pins": []
         },
         {
             "connectionType": 1,
@@ -827,7 +1478,12 @@
             "name": "FT6336U",
             "needCalibration": false,
             "type": 4,
-			"pins": ["SCL", "SDA", "INT", "RST"]
+            "pins": [
+                "SCL",
+                "SDA",
+                "INT",
+                "RST"
+            ]
         },
         {
             "connectionType": 1,
@@ -836,7 +1492,12 @@
             "name": "GSL3680",
             "needCalibration": false,
             "type": 6,
-			"pins": ["SCL", "SDA", "INT", "RST"]
+            "pins": [
+                "SCL",
+                "SDA",
+                "INT",
+                "RST"
+            ]
         },
         {
             "connectionType": 1,
@@ -845,7 +1506,7 @@
             "name": "CST820",
             "needCalibration": false,
             "type": 7,
-			"pins": []
+            "pins": []
         }
     ]
 }
