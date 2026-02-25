@@ -1189,6 +1189,57 @@
             "defaultMCU": "ESP32P4_EMBEDDED",
             "lockMCU": true,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FEsp32_P4_JC4880P443C.png?alt=media&token=9c91ad00-e7af-451b-b897-3082ba7868c5"
+        },
+        {
+            "defaultSize": {
+                "width": 320,
+                "height": 480
+            },
+            "defaultTouch": {
+                "width": 320,
+                "height": 480
+            },
+            "lockRotation": false,
+            "defaultRotation": 1,
+            "fullName": "3.5in resistive yellow st7796 esp32",
+            "id": 25,
+            "idDisplay": 21,
+            "idTouch": 2,
+            "isIPS": true,
+            "isBGR": false,
+            "invertColors": false,
+            "rotations": [
+                {
+                    "swapXY": false,
+                    "invertX": false,
+                    "invertY": false
+                },
+                {
+                    "swapXY": true,
+                    "invertX": false,
+                    "invertY": true
+                },
+                {
+                    "swapXY": false,
+                    "invertX": true,
+                    "invertY": true
+                },
+                {
+                    "swapXY": true,
+                    "invertX": true,
+                    "invertY": false
+                }
+            ],
+            "shortName": "Yellow ST7796 3.5 ESP32",
+            "tags": [
+                "ST7796",
+                "XPT2046",
+                "resistive",
+                "esp32"
+            ],
+            "defaultMCU": "ESP32_EMBEDDED",
+            "lockMCU": true,
+            "urlImage": ""
         }
     ],
     "display": [
@@ -1418,6 +1469,15 @@
             "name": "ST7789 - EMBED",
             "separator": "->",
             "type": 20,
+            "pins": []
+        },
+        {
+            "connectionType": 0,
+            "id": 21,
+            "libModel": 1,
+            "name": "ST7796 - EMBED",
+            "separator": "->",
+            "type": 21,
             "pins": []
         }
     ],
