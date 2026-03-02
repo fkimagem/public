@@ -1239,7 +1239,7 @@
             ],
             "defaultMCU": "ESP32_EMBEDDED",
             "lockMCU": true,
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FESP32WROOM_TFT_3-5_XPT2046_AMARELO.png?alt=media&token=953c9701-e080-42ed-9801-80b7b804e9c5"
         }
     ],
     "display": [
