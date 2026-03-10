@@ -745,7 +745,7 @@
                 "width": 0,
                 "height": 0
             },
-            "lockRotation": false,
+            "lockRotation": true,
             "defaultRotation": 0,
             "fullName": "PCD8544",
             "id": 16,
@@ -794,7 +794,7 @@
                 "width": 0,
                 "height": 0
             },
-            "lockRotation": false,
+            "lockRotation": true,
             "defaultRotation": 0,
             "fullName": "SSD1306",
             "id": 17,
@@ -843,7 +843,7 @@
                 "width": 0,
                 "height": 0
             },
-            "lockRotation": false,
+            "lockRotation": true,
             "defaultRotation": 0,
             "fullName": "ST7565",
             "id": 18,
