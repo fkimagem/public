@@ -658,7 +658,7 @@
             ],
 			"defaultMCU": "ESP32P4",
 			"lockMCU": true,
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fwaveshare_display.png?alt=media&token=f871491a-ddfb-4cc2-8a1c-6dafea4851f5"
         },
         {
             "defaultSize": {
@@ -684,7 +684,7 @@
             ],
 			"defaultMCU": "ESP32P4_EMBEDDED",
 			"lockMCU": true,
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fevboard.png?alt=media&token=1364044d-cf92-4170-a4ae-ce5d1a6c5210"
         },
         {
             "defaultSize": {
@@ -710,7 +710,7 @@
             ],
 			"defaultMCU": "ESP32P4_EMBEDDED",
 			"lockMCU": true,
-            "urlImage": ""
+            "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2Fp4eye.png?alt=media&token=934b7d9f-7eca-4b2a-afc3-d4842889d11d"
         }
     ],
     "display": [
