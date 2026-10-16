@@ -677,7 +677,7 @@
 			"isIPS": false,
 			"isBGR": false,
 			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
+			"rotations": [{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
             "shortName": "ESP32-P4-Functional-EV-Board",
             "tags": [
                 "EK79007", "GT911", "capacitive", "esp", "dsi", "p4"
