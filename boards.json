@@ -371,6 +371,7 @@
 			"defaultMCU": "ESP32",
 			"lockMCU": false,
 			"allowSDCard": true,
+			"defaultShareSPI": 2,
             "urlImage": "https://firebasestorage.googleapis.com/v0/b/apishopify-e8511.firebasestorage.app/o/devkit_boards%2FTFT_4_ILI9488_FT6336U_AMARELO.png?alt=media&token=2f834f18-9061-4fab-b32f-20cc041930a7"
         },
         {
