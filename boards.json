@@ -292,12 +292,12 @@
         },
         {
             "defaultSize": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
 			"defaultTouch": {
-                "height": 320,
-                "width": 480
+                "height": 480,
+                "width": 320
             },
             "fullName": "ILI9488 3.5in - FT6236",
             "id": 11,
@@ -307,7 +307,7 @@
 			"isIPS": false,
 			"isBGR": false,
 			"invertColors": false,
-			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": true, "invertY": true},{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": false,"invertX": false, "invertY": false}],
+			"rotations": [{"swapXY": false,"invertX": false, "invertY": false}, {"swapXY": true,"invertX": false, "invertY": true},{"swapXY": false,"invertX": true, "invertY": true}, {"swapXY": true,"invertX": true, "invertY": false}],
             "shortName": "TFT ILI9488 3.5in",
             "tags": [
                 "ILI9488"
