@@ -536,7 +536,7 @@
             "tags": [
                 "ST7262", "GT911", "capacitive"
             ],
-			"defaultMCU": "ESP32P4_EMBEDDED",
+			"defaultMCU": "ESP32S3_EMBEDDED",
 			"lockMCU": true,
 			"allowSDCard": true,
 			"defaultShareSPI": 0,
